@@ -1,20 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 Not Found</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 - Page Not Found | Sawant Infotech</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpg" href="https://sawantinfotech.in/assets/logo.jpg" />
+  <!-- Or if using .ico -->
+  <link rel="shortcut icon" href="https://sawantinfotech.in/assets/logo.jpg" type="image/x-icon">
+  <meta property="og:title" content="Sawant Infotech">
+  <meta property="og:description" content="Web and Software Development">
+  <meta property="og:image" content="https://sawantinfotech.in/assets/logo.jpg">
+  <!-- SEO -->
+  <meta name="description" content="Make New Software As Your Requirements">
+  <meta name="keywords" content="software, sawant, web, development, coding, programming, website development">
+  <meta name="author" content="Sawant Infotech">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+  </style>
 </head>
-<body class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100">
-  <div class="text-center p-6 bg-white rounded-xl shadow-lg">
-    <h1 class="text-9xl font-extrabold text-gray-300 mb-4">404</h1>
-    <h2 class="text-3xl font-semibold mb-2">Page Not Found</h2>
-    <p class="text-gray-600 mb-6">Sorry, the page you are looking for does not exist.</p>
-    <a href="https://sawantinfotech.in" 
-       class="inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 transition">
-      Go to Home
+
+<body
+  class="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white flex flex-col items-center justify-center min-h-screen text-center px-4">
+  <div class="float">
+    <h1 class="text-9xl font-extrabold text-green-500 mb-4">404</h1>
+  </div>
+  <h2 class="text-2xl md:text-3xl font-semibold mb-2">
+    Oops! Page not found
+  </h2>
+  <p class="text-gray-400 mb-8">
+    The page you’re looking for doesn’t exist or has been moved.
+  </p>
+
+  <div class="flex flex-col md:flex-row gap-4 justify-center items-center float">
+    <a href="https://sawantinfotech.in"
+      class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg transition-transform transform hover:scale-105">
+      Go Home
+    </a>
+
+    <a href="https://wa.me/918806288365" target="_blank"
+      class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-full shadow-lg flex items-center gap-2 transition-transform transform hover:scale-105">
+      <i class="fab fa-whatsapp text-xl"></i> WhatsApp Support
     </a>
   </div>
+
+  <footer class="absolute bottom-4 text-gray-500 text-sm">
+    &copy; 2025 Sawant Infotech. All rights reserved.
+  </footer>
 </body>
+
 </html>
