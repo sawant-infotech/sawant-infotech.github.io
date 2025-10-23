@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SQL Query Generator — Documentation | Sawant Infotech</title>
+  <meta name="description"
+    content="Documentation for SQL Query Generator (Insert / Update / Delete) — Sawant Infotech" />
+  <meta name="author" content="Sawant Infotech" />
+  <link rel="icon" href="https://sawantinfotech.in/assets/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-r from-blue-50 via-blue-100 to-blue-50 min-h-screen text-gray-800">
+
+  <!-- Header -->
+  <header class="w-full bg-white/80 backdrop-blur-sm shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <img src="https://sawantinfotech.in/assets/logo.png" alt="Sawant Infotech" class="h-12">
+        <div>
+          <h1 class="text-2xl font-bold text-blue-700">SQL Query Generator</h1>
+          <p class="text-sm text-gray-600">Generate INSERT / UPDATE / DELETE SQL from pasted data or CSV/Excel files</p>
+        </div>
+      </div>
+      <div class="text-right">
+        <span class="text-sm text-gray-600">Developed by</span>
+        <a href="https://sawantinfotech.in" target="_blank" class="ml-2 font-semibold text-blue-700 underline">Sawant
+          Infotech</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="max-w-6xl mx-auto px-4 py-8 space-y-8">
+
+    <!-- Quick links -->
+    <nav class="bg-white rounded-lg shadow p-4">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div class="text-sm text-gray-600">Jump to:</div>
+        <div class="flex flex-wrap gap-3">
+          <a href="#overview" class="text-blue-700 hover:underline">Overview</a>
+          <a href="#features" class="text-blue-700 hover:underline">Features</a>
+          <a href="#how-to-use" class="text-blue-700 hover:underline">How to use</a>
+          <a href="#where-logic" class="text-blue-700 hover:underline">WHERE logic</a>
+          <a href="#unicode" class="text-blue-700 hover:underline">Unicode</a>
+          <a href="#examples" class="text-blue-700 hover:underline">Examples</a>
+          <a href="#faq" class="text-blue-700 hover:underline">FAQ & Troubleshooting</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Overview -->
+    <section id="overview" class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-bold text-blue-700 mb-2">Overview</h2>
+      <p class="text-gray-700">
+        The <strong>SQL Query Generator</strong> is a lightweight web tool that creates SQL scripts (INSERT, UPDATE,
+        DELETE)
+        from tabular data. You can paste rows directly into the tool or upload a CSV / Excel file (.csv, .xls, .xlsx).
+        The first row is expected to contain column names, and subsequent rows are treated as data rows.
+      </p>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-bold text-blue-700 mb-3">Features</h2>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Generate <strong>INSERT</strong>, <strong>UPDATE</strong>, and <strong>DELETE</strong> statements.</li>
+        <li>Paste tabular text (tab or comma separated) or upload CSV / Excel.</li>
+        <li>Configure <strong>WHERE</strong> column(s) for UPDATE / DELETE using <code>&amp;</code> (AND) and
+          <code>||</code> (OR).
+        </li>
+        <li>Unicode support for string literals (prefix strings with <code>N'...'</code>).</li>
+        <li>Copy or download generated SQL file.</li>
+        <li>Editable table cells after paste or file render — you can correct values inline.</li>
+      </ul>
+    </section>
+
+    <!-- How to use -->
+    <section id="how-to-use" class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-bold text-blue-700 mb-3">How to use</h2>
+
+      <div class="space-y-4 text-gray-700">
+        <div>
+          <h3 class="font-semibold">1. Configure table & query type</h3>
+          <p>Enter the target <strong>Table Name</strong> and choose query type: <code>INSERT</code>,
+            <code>UPDATE</code>, or <code>DELETE</code>.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold">2. Choose input method</h3>
+          <p>
+            Use <strong>Paste Data</strong> (default) — click into the paste area and paste tabular text (first row =
+            column names).
+            Or choose <strong>Upload CSV/Excel</strong> and select a file (.csv, .xls, .xlsx). The tool uses the first
+            worksheet when reading Excel.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold">3. (For UPDATE / DELETE) Specify WHERE column(s)</h3>
+          <p>
+            If you're creating <code>UPDATE</code> or <code>DELETE</code> statements, enter the WHERE columns. See the
+            <a href="#where-logic" class="text-blue-700 underline">WHERE logic</a> section for syntax.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold">4. Use Unicode (optional)</h3>
+          <p>
+            Toggle the <strong>Use Unicode</strong> checkbox if your text values must be prefixed with
+            <code>N'...'</code> (SQL Server Unicode string literal).
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold">5. Generate and export</h3>
+          <p>
+            Click <strong>Generate SQL</strong>. Your SQL will appear in the output box. Use <strong>Copy SQL</strong>
+            to copy to clipboard or <strong>Download SQL</strong> to save a <code>.sql</code> file.
+            <button class="ml-2 px-3 py-1 rounded bg-green-600 text-white text-xs">Tip</button>
+            You can edit the pasted table before generating — the generator always reads the current table content.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHERE clause logic -->
+    <section id="where-logic" class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-bold text-blue-700 mb-3">WHERE clause syntax (UPDATE / DELETE)</h2>
+      <p class="text-gray-700 mb-3">
+        Specify one or more columns that the generator will use to compose the <code>WHERE</code> clause for each data
+        row.
+        The special syntax lets you build AND / OR combinations:
+      </p>
+
+      <ul class="text-gray-700 space-y-2">
+        <li><strong>Single column</strong>: <code>CODE</code> → WHERE <code>CODE = value</code></li>
+        <li><strong>AND</strong>: join columns with <code>&amp;</code> (ampersand) → <code>CODE&SR_NO</code> → WHERE
+          <code>CODE = v1 AND SR_NO = v2</code>
+        </li>
+        <li><strong>OR groups</strong>: separate groups with <code>||</code> (double pipe) →
+          <code>CODE&SR_NO||CODE</code> → WHERE <code>(CODE = v1 AND SR_NO = v2) OR (CODE = v1)</code>
+        </li>
+      </ul>
+
+      <div class="mt-4 bg-blue-50 border-l-4 border-blue-200 p-4 rounded">
+        <p class="text-sm text-gray-700">
+          <strong>Important:</strong> Column names must exactly match the first (header) row values. If a column in the
+          WHERE expression is not found, the generator will alert you.
+        </p>
+      </div>
+    </section>
+
+    <!-- Unicode -->
+    <section id="unicode" class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-bold text-blue-700 mb-3">Unicode option</h2>
+      <p class="text-gray-700">
+        Toggle <strong>Use Unicode</strong> to wrap string values as <code>N'Your string'</code> (SQL Server Unicode
+        literal). This is helpful for international characters.
+      </p>
+
+      <p class="text-sm text-gray-600 mt-2"><strong>Behavior notes:</strong></p>
+      <ul class="text-gray-700 list-disc list-inside">
+        <li>Null-like values (empty or the literal <code>NULL</code>) are preserved as <code>NULL</code> without quotes.
+        </li>
+        <li>Numeric values are not quoted.</li>
+        <li>Single quotes inside strings are escaped (doubled) before the value is quoted.</li>
+      </ul>
+    </section>
+
+    <!-- Examples -->
+    <section id="examples" class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-bold text-blue-700 mb-3">Examples</h2>
+
+      <div class="grid md:grid-cols-2 gap-4 text-gray-700">
+
+        <!-- Example: INSERT -->
+        <div class="p-4 border rounded">
+          <h3 class="font-semibold text-blue-700 mb-2">INSERT example</h3>
+          <p class="text-sm mb-2">Header row: <code>CODE,NAME,AMOUNT</code><br>Data row: <code>ABC,Test,100</code></p>
+          <pre
+            class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-auto"><code>INSERT INTO Menus (CODE, NAME, AMOUNT) VALUES ('ABC', 'Test', 100);</code></pre>
+        </div>
+
+        <!-- Example: UPDATE -->
+        <div class="p-4 border rounded">
+          <h3 class="font-semibold text-blue-700 mb-2">UPDATE example</h3>
+          <p class="text-sm mb-2">WHERE columns: <code>CODE&SR_NO</code></p>
+          <pre class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-auto"><code>UPDATE Menus
+SET CODE = 'ABC', NAME = 'Changed', AMOUNT = 200
+WHERE CODE = 'ABC' AND SR_NO = 1;</code></pre>
+        </div>
+
+        <!-- Example: DELETE -->
+        <div class="p-4 border rounded">
+          <h3 class="font-semibold text-blue-700 mb-2">DELETE example</h3>
+          <p class="text-sm mb-2">WHERE columns: <code>CODE</code></p>
+          <pre
+            class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-auto"><code>DELETE FROM Menus WHERE CODE = 'ABC';</code></pre>
+        </div>
+
+        <!-- Example: OR groups -->
+        <div class="p-4 border rounded">
+          <h3 class="font-semibold text-blue-700 mb-2">Complex WHERE (OR groups)</h3>
+          <p class="text-sm mb-2">Input: <code>CODE&SR_NO||CODE</code></p>
+          <pre
+            class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-auto"><code>WHERE (CODE = 'ABC' AND SR_NO = 1) OR (CODE = 'ABC')</code></pre>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Implementation details -->
+    <section id="implementation" class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-bold text-blue-700 mb-3">Implementation details (how the tool works)</h2>
+      <ol class="list-decimal list-inside text-gray-700 space-y-2">
+        <li><strong>Input parsing</strong>: Pasted text is split by newline into rows, then by tab or comma into
+          columns.</li>
+        <li><strong>Header row</strong>: First row is treated as column names and used for SQL column lists and mapping.
+        </li>
+        <li><strong>Value formatting</strong>:
+          <ul class="list-disc list-inside ml-4">
+            <li>Empty or literal <code>NULL</code> → <code>NULL</code></li>
+            <li>Numeric values → left unquoted</li>
+            <li>Strings → escaped and quoted; <code>Use Unicode</code> toggles <code>N'...'</code></li>
+          </ul>
+        </li>
+        <li><strong>UPDATE</strong>: All columns are placed in the <code>SET</code> clause; WHERE clause built per-row
+          from the specified expression.</li>
+        <li><strong>DELETE</strong>: WHERE clause built per-row from the specified expression.</li>
+        <li><strong>Output</strong>: All generated statements are concatenated into a single SQL text blob which the
+          user can copy or download.</li>
+      </ol>
+    </section>
+
+    <!-- Limitations -->
+    <section id="limitations" class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-bold text-blue-700 mb-3">Limitations & notes</h2>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>The tool expects a correct header row — column matching is exact and case-sensitive depending on your DB
+          mapping.</li>
+        <li>Data type inference is basic: numbers vs strings. For special types (dates, GUIDs) you may need to
+          post-process the generated SQL.</li>
+        <li>Large files may be slow in the browser for very large row counts (thousands+). For heavy loads, use
+          server-side conversion.</li>
+        <li>The tool does not execute the SQL — it only generates script text. Always review and run in a safe test
+          environment first.</li>
+      </ul>
+    </section>
+
+    <!-- FAQ & Troubleshooting -->
+    <section id="faq" class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-bold text-blue-700 mb-3">FAQ & Troubleshooting</h2>
+
+      <div class="space-y-4 text-gray-700">
+        <div>
+          <h3 class="font-semibold">Q: My WHERE column is not found — what to do?</h3>
+          <p>Ensure the column name exactly matches a header cell (no extra spaces). If your header contains whitespace,
+            copy it exactly or edit the header cell in the paste table to a clean name.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold">Q: My numbers are being quoted as strings</h3>
+          <p>If a numeric value contains spaces, thousand separators, or non-digit characters, it's treated as a string.
+            Clean the input or edit the cell before generating.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold">Q: Excel upload shows strange separators</h3>
+          <p>Excel is converted to CSV internally. If values contain commas, ensure they were stored properly in Excel —
+            the converter will preserve cell boundaries when reading the sheet.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold">Q: Can I use functions or raw SQL in a cell?</h3>
+          <p>Values are quoted/escaped automatically. If you want raw SQL expressions (e.g., <code>GETDATE()</code>)
+            instead of quoted strings, you must edit the generated SQL manually after generation.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold">Troubleshooting checklist</h3>
+          <ul class="list-disc list-inside ml-4">
+            <li>Verify header row exists and matches WHERE columns.</li>
+            <li>Edit table cells directly (header or data) if parsing looks off.</li>
+            <li>Use the <strong>Clear</strong> button to reset and try again.</li>
+            <li>Test generated SQL in a safe non-production database first.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shortcuts & tips -->
+    <section id="tips" class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-bold text-blue-700 mb-3">Shortcuts & Pro tips</h2>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Paste from Excel directly — Excel copies are tab-separated and will paste cleanly into the tool.</li>
+        <li>Edit header names in-place to match your database column names before generating.</li>
+        <li>Use OR groups (<code>||</code>) to fall back on alternate keys when composing WHERE clauses.</li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-bold text-blue-700 mb-3">Contact & License</h2>
+      <p class="text-gray-700">For questions, improvements or integration help, contact <a
+          href="https://sawantinfotech.in" class="text-blue-700 underline">Sawant Infotech</a>.</p>
+      <p class="text-sm text-gray-600 mt-2 font-bold">License: This documentation and its associated tool are the
+        exclusive
+        intellectual property
+        of Sawant Infotech. Any form of redistribution, modification, or commercial use without
+        explicit written permission from Sawant Infotech is strictly prohibited.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full bg-gray-800 text-gray-300 py-6 mt-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <p class="text-sm">
+        © <span id="docYear"></span> Sawant Infotech. All rights reserved. |
+        Developed by <a href="https://sawantinfotech.in" target="_blank"
+          class="font-semibold text-white underline">Sawant Infotech</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Insert year
+    document.getElementById('docYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>

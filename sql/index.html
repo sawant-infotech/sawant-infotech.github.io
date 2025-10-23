@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SQL Query Generator with flexible WHERE clause and CSV/Excel upload support">
+  <title>SQL Query Generator | Sawant Infotech</title>
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="SQL Query Generator | Sawant Infotech">
+  <meta name="description"
+    content="Generate SQL Insert, Update and Delete scripts instantly from Excel or CSV. Developed by Sawant Infotech.">
+  <meta name="author" content="Sawant Infotech">
+  <meta name="keywords"
+    content="SQL Generator, Excel to SQL, CSV to SQL, Script Generator, Insert Update Delete, Sawant Infotech">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SQL Query Generator | Sawant Infotech">
+  <meta property="og:description" content="Generate SQL scripts easily from Excel or CSV.">
+  <meta property="og:image" content="https://sawantinfotech.in/assets/logo.png">
+  <meta property="og:url" content="https://sawantinfotech.in">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SQL Query Generator | Sawant Infotech">
+  <meta name="twitter:description" content="Generate SQL Insert, Update and Delete scripts from Excel or CSV.">
+  <meta name="twitter:image" content="https://sawantinfotech.in/assets/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://sawantinfotech.in/assets/logo.png">
+
+  <script src="xlsx.full.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-r from-blue-50 via-blue-100 to-blue-50 min-h-screen relative">
+
+  <div class="absolute top-4 right-4 text-gray-600 text-sm">
+    <a href="doc.html" class="font-bold">Documentation</a>
+  </div>
+
+  <div class="flex flex-col items-center p-4">
+    <!-- Logo -->
+    <div class="w-full max-w-4xl flex justify-center mb-2">
+      <img src="https://sawantinfotech.in/assets/logo.png" alt="Logo" width="150">
+    </div>
+
+    <div class="w-full space-y-4">
+
+      <!-- Row 1 -->
+      <div class="w-full flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+        <div class="w-full md:w-1/2">
+          <!-- <label class="font-semibold">Label Left 1</label> -->
+          <div class="mt-1">
+
+            <!-- Configuration Box -->
+            <div class="w-full max-w-4xl bg-white rounded-xl shadow-md p-6 mb-6">
+              <h2 class="text-2xl font-bold mb-4 text-center text-blue-700">SQL Query Generator (INSERT / UPDATE /
+                DELETE)
+              </h2>
+              <div class="space-y-4">
+
+                <!-- Table Name -->
+                <div>
+                  <label class="font-semibold">Table Name:</label>
+                  <div class="flex flex-wrap gap-4">
+                    <input type="text" id="tableName" placeholder="Enter table name (e.g., Menus)"
+                      class="flex-1 border border-gray-300 rounded-md p-2 min-w-[200px]">
+                    <select id="queryType" onchange="toggleWhereColumn()"
+                      class="flex-1 border border-gray-300 rounded-md p-2 min-w-[150px]">
+                      <option value="INSERT">INSERT</option>
+                      <option value="UPDATE">UPDATE</option>
+                      <option value="DELETE">DELETE</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Unicode Checkbox -->
+                <div class="flex items-center gap-4">
+                  <input type="checkbox" id="useUnicode" class="mr-2">
+                  <label for="useUnicode">Use Unicode for strings (N'...')</label>
+                </div>
+
+                <!-- WHERE Column -->
+                <div id="whereColumnBox" class="hidden">
+                  <label class="font-semibold">WHERE Column(s) for UPDATE/DELETE:</label>
+                  <input type="text" id="whereColumn" placeholder="E.g., CODE&SR_NO or CODE||SR_NO"
+                    class="w-full border border-gray-300 rounded-md p-2">
+                  <div id="whereSummary" class="text-sm text-gray-600 mt-1"></div>
+                </div>
+
+                <!-- Input Method -->
+                <div class="flex items-center gap-4">
+                  <label><input type="radio" name="inputType" value="paste" id="radioPaste" checked
+                      onchange="toggleInput()">
+                    Paste Data</label>
+                  <label><input type="radio" name="inputType" value="file" id="radioFile" onchange="toggleInput()">
+                    Upload
+                    CSV/Excel</label>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Paste Table -->
+            <div id="pasteBox" class="w-full max-w-4xl bg-white rounded-xl shadow-md p-6 mb-6">
+              <label class="font-semibold">Paste Data Here (First row = column names):</label>
+              <div id="pasteTableContainer" class="overflow-auto max-h-64 border border-gray-300 rounded-md p-2">
+                <table id="pasteTable" class="min-w-full table-auto border-collapse"></table>
+              </div>
+              <small class="text-gray-500 block mt-1">Paste tabular data (tab or comma separated) directly into the
+                table.</small>
+            </div>
+
+            <!-- File Upload -->
+            <div id="fileBox" class="w-full max-w-4xl bg-white rounded-xl shadow-md p-6 mb-6 hidden">
+              <label class="font-semibold">Select CSV or Excel File:</label>
+              <input type="file" id="inputFile" accept=".csv,.xls,.xlsx"
+                class="w-full border border-gray-300 rounded-md p-2">
+            </div>
+
+            <!-- Buttons -->
+            <div class="w-full max-w-4xl flex flex-wrap gap-4 mb-6">
+              <button onclick="generateSQL()"
+                class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Generate
+                SQL</button>
+              <button onclick="clearAll()"
+                class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500">Clear</button>
+            </div>
+          </div>
+        </div>
+        <div class="w-full md:w-1/2">
+          <!-- <label class="font-semibold">Label Right 1</label> -->
+          <div class="mt-1">
+            <!-- Output SQL -->
+            <div class="w-full max-w-4xl bg-white rounded-xl shadow-md p-6 mb-6">
+              <label class="font-semibold">Generated SQL:</label>
+              <textarea id="outputSQL" rows="10" readonly
+                class="w-full border border-gray-300 rounded-md p-2 mb-4"></textarea>
+              <div class="flex flex-wrap gap-4">
+                <button onclick="copySQL()" class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700">Copy
+                  SQL</button>
+                <button onclick="downloadSQL()"
+                  class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Download
+                  SQL</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="w-full bg-gray-800 text-gray-300 py-6 mt-8">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <p class="text-sm">
+        © <span id="docYear"></span> Sawant Infotech. All rights reserved. |
+        Developed by <a href="https://sawantinfotech.in" target="_blank"
+          class="font-semibold text-white underline">Sawant Infotech</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // set document year (fixed id)
+    const docYearEl = document.getElementById("docYear");
+    if (docYearEl) docYearEl.textContent = new Date().getFullYear();
+  </script>
+
+
+  <script>
+    let pasteData = [];
+
+    function toggleInput() {
+      const pasteSelected = document.getElementById("radioPaste").checked;
+      document.getElementById("pasteBox").classList.toggle("hidden", !pasteSelected);
+      document.getElementById("fileBox").classList.toggle("hidden", pasteSelected);
+    }
+
+    function toggleWhereColumn() {
+      const queryType = document.getElementById("queryType").value;
+      document.getElementById("whereColumnBox").classList.toggle("hidden", !(queryType === "UPDATE" || queryType === "DELETE"));
+    }
+
+    // Make table contenteditable and handle paste
+    const pasteTable = document.getElementById("pasteTable");
+    pasteTable.addEventListener("paste", function (e) {
+      e.preventDefault();
+      const text = (e.clipboardData || window.clipboardData).getData('text');
+      processPasteText(text);
+    });
+
+    function processPasteText(text) {
+      const rows = text.trim().split(/\r?\n/);
+      pasteData = [];
+      pasteTable.innerHTML = "";
+
+      rows.forEach((row, rowIndex) => {
+        const cols = row.split(/\t|,/);
+        pasteData.push(cols);
+        const tr = document.createElement("tr");
+
+        cols.forEach(col => {
+          const cell = document.createElement(rowIndex === 0 ? "th" : "td");
+          cell.innerText = col;
+          cell.contentEditable = rowIndex !== 0; // allow editing except header
+          cell.className = "border border-gray-300 px-2 py-1";
+          tr.appendChild(cell);
+        });
+
+        tr.className += " hover:bg-blue-50";
+        pasteTable.appendChild(tr);
+      });
+    }
+
+    function generateSQL() {
+      const tableName = document.getElementById("tableName").value.trim();
+      const useUnicode = document.getElementById("useUnicode").checked;
+      const queryType = document.getElementById("queryType").value;
+      const whereInput = document.getElementById("whereColumn").value.trim();
+      const pasteSelected = document.getElementById("radioPaste").checked;
+
+      if (!tableName) { alert("Please enter Table Name!"); return; }
+      if ((queryType === "UPDATE" || queryType === "DELETE") && !whereInput) { alert("Please enter WHERE column(s)!"); return; }
+
+      if (pasteSelected) {
+        const currentData = getTableData(); // <-- get latest edited table
+        if (!currentData.length) { alert("Paste some data into the table first!"); return; }
+        processRows(currentData, tableName, useUnicode, queryType, whereInput);
+      } else {
+        const file = document.getElementById("inputFile").files[0];
+        if (!file) { alert("Please select a file!"); return; }
+        // readFile now returns a Promise that resolves to rows; wait and then process
+        readFile(file).then(rows => {
+          if (!rows || !rows.length) { alert("No rows found in file!"); return; }
+          // update pasteData and render table for user visibility
+          pasteData = rows;
+          renderTableFromData(rows);
+          processRows(rows, tableName, useUnicode, queryType, whereInput);
+        }).catch(err => {
+          console.error(err);
+          alert('Error reading file: ' + (err && err.message ? err.message : err));
+        });
+      }
+    }
+
+    function processRows(data, tableName, useUnicode, queryType, whereInput) {
+      const columns = data[0] || [];
+      let sqlOutput = "";
+      const usedWhereCols = new Set();
+
+      for (let i = 1; i < data.length; i++) {
+        const values = (data[i] || []).map(v => formatValue(v, useUnicode));
+        if (queryType === "INSERT") {
+          sqlOutput += `INSERT INTO ${tableName} (${columns.join(", ")}) VALUES (${values.join(", ")});\n`;
+        } else {
+          const whereClause = generateWhereClause(values, columns, whereInput, usedWhereCols);
+          if (queryType === "UPDATE") {
+            const setClauses = columns.map((col, idx) => `${col} = ${values[idx]}`);
+            sqlOutput += `UPDATE ${tableName} SET ${setClauses.join(", ")} WHERE ${whereClause};\n`;
+          } else if (queryType === "DELETE") {
+            sqlOutput += `DELETE FROM ${tableName} WHERE ${whereClause};\n`;
+          }
+        }
+      }
+
+      document.getElementById("whereSummary").innerText = "Columns used in WHERE: " + Array.from(usedWhereCols).join(", ");
+      document.getElementById("outputSQL").value = sqlOutput;
+    }
+
+    function generateWhereClause(rowValues, columns, whereInput, usedWhereCols) {
+      const orGroups = whereInput.split("||");
+      const orClauses = orGroups.map(group => {
+        const andCols = group.split("&");
+        const andClauses = andCols.map(col => {
+          const idx = columns.indexOf(col);
+          if (idx === -1) { alert(`WHERE column "${col}" not found!`); throw new Error("Column not found"); }
+          usedWhereCols.add(col);
+          return `${col} = ${rowValues[idx]}`;
+        });
+        return andClauses.join(" AND ");
+      });
+      return orClauses.join(" OR ");
+    }
+
+    function formatValue(value, useUnicode) {
+      // guard against undefined/null
+      value = (value == null ? '' : String(value)).trim();
+      if (value === "" || value.toUpperCase() === "NULL") return "NULL";
+      if (!isNaN(value)) return value;
+      value = value.replace(/'/g, "''");
+      return useUnicode ? `N'${value}'` : `'${value}'`;
+    }
+
+    function copySQL() {
+      const output = document.getElementById("outputSQL");
+      const text = output.value;
+      if (!text) { alert('No SQL to copy!'); return; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => alert('SQL copied to clipboard!')).catch(err => {
+          console.error('Clipboard write failed', err);
+          fallbackCopy(text);
+        });
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); alert('SQL copied to clipboard!'); }
+      catch (e) { alert('Copy failed: ' + e); }
+      document.body.removeChild(ta);
+    }
+
+    function clearAll() {
+      document.getElementById("tableName").value = "";
+      document.getElementById("useUnicode").checked = false;
+      document.getElementById("radioPaste").checked = true;
+      document.getElementById("radioFile").checked = false;
+      document.getElementById("queryType").value = "INSERT";
+      document.getElementById("whereColumn").value = "";
+      document.getElementById("whereSummary").innerText = "";
+      toggleInput();
+      toggleWhereColumn();
+      pasteData = [];
+      pasteTable.innerHTML = "";
+      document.getElementById("inputFile").value = "";
+      document.getElementById("outputSQL").value = "";
+      initPasteTable();
+
+    }
+
+    function readFile(file, tableName, useUnicode, queryType, whereInput) {
+      // Return a Promise that resolves to rows array
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        const ext = file.name.split('.').pop().toLowerCase();
+
+        reader.onload = function (e) {
+          try {
+            let rows = [];
+            if (ext === "csv") {
+              // simple CSV split (note: does not fully handle quoted fields)
+              rows = e.target.result.split(/\r?\n/).filter(r => r.trim() !== '').map(r => r.split(/\t|,/));
+            } else if (ext === "xls" || ext === "xlsx") {
+              const data = new Uint8Array(e.target.result);
+              const workbook = XLSX.read(data, { type: 'array' });
+              const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+              const csv = XLSX.utils.sheet_to_csv(firstSheet);
+              rows = csv.split(/\r?\n/).filter(r => r.trim() !== '').map(r => r.split(/\t|,/));
+            } else { reject(new Error('Unsupported file type')); return; }
+            resolve(rows);
+          } catch (err) { reject(err); }
+        };
+
+        reader.onerror = function (err) { reject(err); };
+
+        if (ext === "csv") {
+          reader.readAsText(file);
+        } else {
+          reader.readAsArrayBuffer(file);
+        }
+      });
+    }
+
+    function renderTableFromData(rows) {
+      pasteTable.innerHTML = "";
+      rows.forEach((cols, i) => {
+        const tr = document.createElement("tr");
+        cols.forEach(col => {
+          const cell = document.createElement(i === 0 ? "th" : "td");
+          cell.innerText = col;
+          cell.contentEditable = i !== 0;
+          cell.className = "border border-gray-300 px-2 py-1";
+          tr.appendChild(cell);
+        });
+        tr.className += " hover:bg-blue-50";
+        pasteTable.appendChild(tr);
+      });
+    }
+
+    function downloadSQL() {
+      const sqlText = document.getElementById("outputSQL").value;
+      if (!sqlText) { alert("No SQL to download!"); return; }
+      const blob = new Blob([sqlText], { type: "text/sql" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "generated_queries.sql";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Initialize table with one empty row
+    function initPasteTable() {
+      const tr = document.createElement("tr");
+      const td = document.createElement("td");
+      td.innerText = "";
+      td.contentEditable = true;
+      td.className = "border border-gray-300 px-2 py-1";
+      tr.appendChild(td);
+      pasteTable.appendChild(tr);
+    }
+    initPasteTable();
+
+    function getTableData() {
+      const table = document.getElementById("pasteTable");
+      const rows = [];
+      for (let r = 0; r < table.rows.length; r++) {
+        const cols = [];
+        for (let c = 0; c < table.rows[r].cells.length; c++) {
+          cols.push(table.rows[r].cells[c].innerText.trim());
+        }
+        rows.push(cols);
+      }
+      return rows;
+    }
+    console.clear();
+  </script>
+</body>
+
+</html>
