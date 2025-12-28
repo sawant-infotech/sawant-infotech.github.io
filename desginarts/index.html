@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sawant Designs & Arts | Creative Studio</title>
+    <meta name="description"
+        content="Sawant Designs & Arts - Premium Photo & Video Editing, Logo Creation, and Resin Arts. Your vision, our artistic touch.">
+    <link rel="canonical" href="https://sawantinfotech.in/desginarts/">
+    <meta name="keywords"
+        content="Sawant Designs, photo editing, video editing, logo design, resin art, branding, creative studio">
+    <meta name="author" content="Sawant Designs & Arts">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0b0f1a">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Sawant Designs & Arts | Creative Studio">
+    <meta property="og:description"
+        content="Premium photo & video editing, logo creation and bespoke resin art—turning ideas into masterpieces.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sawantinfotech.in/desginarts/">
+    <meta property="og:image" content="https://sawantinfotech.in/desginarts/resin-art.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@SawantDesigns">
+    <meta name="twitter:title" content="Sawant Designs & Arts | Creative Studio">
+    <meta name="twitter:description"
+        content="Premium photo & video editing, logo creation and bespoke resin art—turning ideas into masterpieces.">
+    <meta name="twitter:image" content="https://sawantinfotech.in/desginarts/resin-art.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Sawant Designs & Arts",
+      "url": "https://sawantinfotech.in/desginarts/",
+      "logo": "https://sawantinfotech.in/desginarts/resin-art.png",
+      "sameAs": [],
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+918806288365",
+        "contactType": "customer service",
+        "areaServed": "IN",
+        "availableLanguage": "English"
+      }]
+    }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf8ed',
+                            100: '#f9edcd',
+                            200: '#f2d896',
+                            300: '#ebbd5c',
+                            400: '#e5a532',
+                            50: '#c8861d',
+                            600: '#a36316',
+                            700: '#824816',
+                            800: '#6d3c19',
+                            900: '#5c3318',
+                            950: '#35190a',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    animation: {
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'gradient-x': {
+                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fbbf24, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-glow:hover {
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+            border-color: rgba(245, 158, 11, 0.5);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f59e0b;
+        }
+
+        /* Branding Logo CSS */
+        .official-logo {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 10px 20px -5px rgba(245, 158, 11, 0.4);
+            overflow: hidden;
+        }
+
+        .official-logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                left: -150%;
+            }
+
+            100% {
+                left: 150%;
+            }
+        }
+
+        /* Loader Styles */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0b0f1a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+
+        .loader-content {
+            text-align: center;
+            animation: pulse-slow 2s infinite;
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 24px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-progress {
+            width: 0%;
+            height: 100%;
+            background: #f59e0b;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: progress 2s ease-in-out forwards;
+        }
+
+        @keyframes progress {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        .loader-finish {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Skip link */
+        .skip-link {
+            position: absolute;
+            left: 1rem;
+            top: 1rem;
+            background: #0b0f1a;
+            color: #fff;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            transform: translateY(-150%);
+            transition: transform .2s ease;
+            z-index: 99999;
+        }
+
+        .skip-link:focus {
+            transform: translateY(0);
+            outline: 3px solid rgba(245, 158, 11, 0.8);
+            outline-offset: 2px;
+        }
+
+        /* Focus-visible utility */
+        :focus-visible {
+            outline: 3px solid rgba(245, 158, 11, 0.9);
+            outline-offset: 2px;
+        }
+
+        /* Ensure interactive controls have clear focus rings */
+        a:focus-visible,
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible,
+        select:focus-visible {
+            outline: 3px solid rgba(245, 158, 11, 0.95);
+            outline-offset: 2px;
+            border-radius: 8px;
+        }
+
+        .loader-finish {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body class="bg-[#0b0f1a] text-slate-200 font-sans selection:bg-brand-500 selection:text-white overflow-x-hidden">
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Loading Screen -->
+    <div id="loader" role="status" aria-live="polite" aria-label="Loading content, press Escape to skip" tabindex="0">
+        <div class="loader-content">
+            <div class="official-logo mx-auto mb-4">S</div>
+            <h2 class="text-white font-outfit font-bold tracking-[0.3em] uppercase text-sm">Sawant Designs</h2>
+            <div class="loader-bar mx-auto">
+                <div class="loader-progress"></div>
+            </div>
+            <!-- Skip loader for keyboard users -->
+            <button id="skip-loader" class="sr-only" onclick="skipLoader()">Skip loading animation</button>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header x-data="{ mobileMenuOpen: false, scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 20)"
+        :class="{ 'glass py-4': scrolled, 'bg-transparent py-6': !scrolled }"
+        class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 lg:px-12">
+        <nav role="navigation" aria-label="Main Navigation" class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <div class="official-logo group-hover:rotate-12 transition-transform duration-500">S</div>
+                <div class="flex flex-col">
+                    <span class="text-white font-outfit font-bold text-lg tracking-tight leading-none">Sawant</span>
+                    <span class="text-brand-400 font-outfit font-medium text-[10px] tracking-[0.2em] uppercase">Designs
+                        & Arts</span>
+                </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#hero" class="hover:text-brand-400 transition-colors">Home</a>
+                <a href="#services" class="hover:text-brand-400 transition-colors">Services</a>
+                <a href="#works" class="hover:text-brand-400 transition-colors">Our Works</a>
+                <a href="#contact"
+                    class="px-5 py-2.5 bg-brand-500 text-white rounded-full hover:bg-brand-600 transition-all hover:shadow-lg hover:shadow-brand-500/20">Contact
+                    Us</a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen" :aria-expanded="mobileMenuOpen"
+                aria-controls="mobile-menu" aria-label="Toggle navigation menu" class="md:hidden text-white">
+                <i data-lucide="menu" x-show="!mobileMenuOpen" aria-hidden="true"></i>
+                <i data-lucide="x" x-show="mobileMenuOpen" aria-hidden="true"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" x-show="mobileMenuOpen"
+            x-effect="if (mobileMenuOpen) $nextTick(()=> $refs.mobileFirst.focus())"
+            x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-4"
+            x-transition:enter-end="opacity-100 translate-y-0" :aria-hidden="!mobileMenuOpen"
+            @keydown.escape.window="mobileMenuOpen = false" role="menu"
+            class="absolute top-full left-0 right-0 glass mt-2 mx-4 rounded-2xl p-6 md:hidden">
+            <div class="flex flex-col gap-4">
+                <a href="#hero" @click="mobileMenuOpen = false" class="text-lg" x-ref="mobileFirst">Home</a>
+                <a href="#services" @click="mobileMenuOpen = false" class="text-lg">Services</a>
+                <a href="#works" @click="mobileMenuOpen = false" class="text-lg">Our Works</a>
+                <a href="#contact" @click="mobileMenuOpen = false"
+                    class="w-full text-center py-3 bg-brand-500 text-white rounded-xl">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+            <!-- Background Elements -->
+            <div
+                class="absolute top-0 right-0 -mr-20 -mt-20 w-[500px] h-[500px] bg-brand-500/10 rounded-full blur-[100px] animate-pulse-slow">
+            </div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[100px] animate-pulse-slow"
+                style="animation-delay: 2s"></div>
+
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+                <div class="space-y-8">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-brand-500/20 text-brand-400 text-sm font-medium">
+                        <span class="flex h-2 w-2 rounded-full bg-brand-500 animate-ping"></span>
+                        Creative Digital Solutions
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-outfit font-extrabold leading-tight">
+                        Transforming <span class="text-gradient">Ideas</span> Into Masterpieces
+                    </h1>
+                    <p class="text-lg text-slate-400 max-w-xl leading-relaxed">
+                        At Sawant Designs & Arts, we blend technology with creativity to deliver stunning photo editing,
+                        cinematic video production, and unique resin art that captures the essence of your brand.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="#services"
+                            class="px-8 py-4 bg-brand-500 text-white rounded-2xl font-bold flex items-center gap-2 hover:bg-brand-600 transition-all hover:scale-105 shadow-xl shadow-brand-500/30">
+                            Explore Services
+                            <i data-lucide="arrow-right" class="w-5 h-5" aria-hidden="true"></i>
+                        </a>
+                        <a href="#works"
+                            class="px-8 py-4 glass text-white rounded-2xl font-bold hover:bg-white/5 transition-all">
+                            View Portfolio
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-6 pt-8 border-t border-slate-800">
+                        <div class="flex -space-x-4">
+                            <div
+                                class="h-10 w-10 rounded-full bg-slate-700 border-2 border-[#0b0f1a] flex items-center justify-center text-xs">
+                                A</div>
+                            <div
+                                class="h-10 w-10 rounded-full bg-slate-600 border-2 border-[#0b0f1a] flex items-center justify-center text-xs">
+                                B</div>
+                            <div
+                                class="h-10 w-10 rounded-full bg-slate-500 border-2 border-[#0b0f1a] flex items-center justify-center text-xs">
+                                C</div>
+                        </div>
+                        <p class="text-sm text-slate-500">Trusted by over <span class="text-white font-bold">20+</span>
+                            customers.</p>
+                    </div>
+                </div>
+
+                <div class="relative lg:block hidden">
+                    <div class="relative z-10 animate-float">
+                        <img src="resin-art.png" alt="Resin Art Masterpiece"
+                            class="rounded-3xl shadow-2xl border border-white/10" width="1200" height="800"
+                            loading="lazy" decoding="async">
+                        <!-- Floating Cards -->
+                        <div class="absolute -bottom-10 -left-10 glass p-6 rounded-2xl animate-float"
+                            style="animation-delay: 1s">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="h-12 w-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400">
+                                    <i data-lucide="video" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400">Video Editing</p>
+                                    <p class="font-bold">Cinematic Quality</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -top-10 -right-10 glass p-6 rounded-2xl animate-float"
+                            style="animation-delay: 2s">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="h-12 w-12 bg-brand-500/20 rounded-xl flex items-center justify-center text-brand-400">
+                                    <i data-lucide="pen-tool" aria-hidden="true"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400">Logo Design</p>
+                                    <p class="font-bold">Creative Branding</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-24 px-6 lg:px-12 bg-[#0d121f]">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-brand-400 font-outfit font-bold tracking-widest uppercase text-sm mb-4">What We Do
+                    </h2>
+                    <h3 class="text-4xl lg:text-5xl font-outfit font-extrabold text-white">Our Creative Expertise</h3>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Photo & Video Editing -->
+                    <div
+                        class="group relative bg-[#171e2e] p-8 rounded-3xl border border-white/5 transition-all duration-500 hover:-translate-y-2 card-glow overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-brand-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700">
+                        </div>
+                        <div
+                            class="h-14 w-14 bg-brand-500/10 rounded-2xl flex items-center justify-center text-brand-500 mb-6 group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="clapperboard" class="w-7 h-7" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-4">Photo & Video Editing</h4>
+                        <p class="text-slate-400 leading-relaxed mb-6">High-end color grading, retouching, and cinematic
+                            assembly. We bring life to your raw captures with professional post-production.</p>
+                        <div class="relative h-48 rounded-2xl overflow-hidden mb-6">
+                            <img src="editing.png" alt="Editing Suite"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                width="800" height="600" loading="lazy" decoding="async">
+                        </div>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-500"
+                                    aria-hidden="true"></i> Advanced Color Grading</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" aria-hidden="true"
+                                    class="w-4 h-4 text-brand-500"></i> Portrait Retouching</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" aria-hidden="true"
+                                    class="w-4 h-4 text-brand-500"></i> Social Media Content</li>
+                        </ul>
+                    </div>
+
+                    <!-- Logo Creations -->
+                    <div
+                        class="group relative bg-[#171e2e] p-8 rounded-3xl border border-white/5 transition-all duration-500 hover:-translate-y-2 card-glow overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700">
+                        </div>
+                        <div
+                            class="h-14 w-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="palette" class="w-7 h-7" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-4">Logo & Branding</h4>
+                        <p class="text-slate-400 leading-relaxed mb-6">Your identity matters. We design unique,
+                            memorable logos and brand identities that resonate with your audience.</p>
+                        <div class="relative h-48 rounded-2xl overflow-hidden mb-6">
+                            <img src="logo-design.png" alt="Logo Design"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                width="800" height="600" loading="lazy" decoding="async">
+                        </div>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-blue-500"
+                                    aria-hidden="true"></i> Minimalist Logo Designs</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" aria-hidden="true"
+                                    class="w-4 h-4 text-blue-500"></i> Full Brand Guidelines</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" aria-hidden="true"
+                                    class="w-4 h-4 text-blue-500"></i> Vector Illustration</li>
+                        </ul>
+                    </div>
+
+                    <!-- Resin Art -->
+                    <div
+                        class="group relative bg-[#171e2e] p-8 rounded-3xl border border-white/5 transition-all duration-500 hover:-translate-y-2 card-glow overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-pink-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-700">
+                        </div>
+                        <div
+                            class="h-14 w-14 bg-pink-500/10 rounded-2xl flex items-center justify-center text-pink-500 mb-6 group-hover:bg-pink-500 group-hover:text-white transition-colors duration-300">
+                            <i data-lucide="sparkles" class="w-7 h-7" aria-hidden="true"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-4">Resin Arts</h4>
+                        <p class="text-slate-400 leading-relaxed mb-6">Handcrafted, bespoke resin masterpieces. From
+                            ocean-themed tabletops to preserved flower art, we create timeless pieces.</p>
+                        <div class="relative h-48 rounded-2xl overflow-hidden mb-6">
+                            <img src="resin-art.png" alt="Resin Art"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                width="800" height="600" loading="lazy" decoding="async">
+                        </div>
+                        <ul class="space-y-2 text-sm text-slate-300">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-pink-500"
+                                    aria-hidden="true"></i> Custom Furniture Pieces</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" aria-hidden="true"
+                                    class="w-4 h-4 text-pink-500"></i> Resin Pour Clocks</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" aria-hidden="true"
+                                    class="w-4 h-4 text-pink-500"></i> Anniversary Keepsakes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work/Portfolio Section -->
+        <section id="works" class="py-24 px-6 lg:px-12 bg-[#0b0f1a]" x-data="{ filter: 'all' }">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+                    <div>
+                        <h2 class="text-brand-400 font-outfit font-bold tracking-widest uppercase text-sm mb-4">
+                            Portfolio</h2>
+                        <h3 class="text-4xl lg:text-5xl font-outfit font-extrabold text-white">Our Creative Work</h3>
+                    </div>
+
+                    <!-- Filter Buttons -->
+                    <div class="flex flex-wrap gap-3 bg-[#171e2e] p-2 rounded-2xl border border-white/5">
+                        <button @click="filter = 'all'"
+                            :class="filter === 'all' ? 'bg-brand-500 text-white' : 'text-slate-400 hover:text-white'"
+                            class="px-6 py-2 rounded-xl text-sm font-bold transition-all">All</button>
+                        <button @click="filter = 'video'"
+                            :class="filter === 'video' ? 'bg-brand-500 text-white' : 'text-slate-400 hover:text-white'"
+                            class="px-6 py-2 rounded-xl text-sm font-bold transition-all">Video & Photo</button>
+                        <button @click="filter = 'logo'"
+                            :class="filter === 'logo' ? 'bg-brand-500 text-white' : 'text-slate-400 hover:text-white'"
+                            class="px-6 py-2 rounded-xl text-sm font-bold transition-all">Logos</button>
+                        <button @click="filter = 'resin'"
+                            :class="filter === 'resin' ? 'bg-brand-500 text-white' : 'text-slate-400 hover:text-white'"
+                            class="px-6 py-2 rounded-xl text-sm font-bold transition-all">Resin Art</button>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Work Item 1 -->
+                    <div x-show="filter === 'all' || filter === 'resin'"
+                        x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                        class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer">
+                        <img src="resin-art.png" alt="Ocean Table"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            width="800" height="1000" loading="lazy" decoding="async">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#0b0f1a] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                            <span class="text-brand-400 text-xs font-bold uppercase tracking-widest mb-2">Resin
+                                Art</span>
+                            <h4 class="text-white text-2xl font-bold">Deep Ocean Table</h4>
+                        </div>
+                    </div>
+
+                    <!-- Work Item 2 -->
+                    <div x-show="filter === 'all' || filter === 'video'"
+                        x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                        class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer">
+                        <img src="editing.png" alt="Video Edit"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            width="800" height="1000" loading="lazy" decoding="async">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#0b0f1a] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                            <span class="text-brand-400 text-xs font-bold uppercase tracking-widest mb-2">Video
+                                Production</span>
+                            <h4 class="text-white text-2xl font-bold">Cinematic Brand Story</h4>
+                        </div>
+                    </div>
+
+                    <!-- Work Item 3 -->
+                    <div x-show="filter === 'all' || filter === 'logo'"
+                        x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+                        class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer">
+                        <img src="logo-design.png" alt="Logo Work"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            width="800" height="1000" loading="lazy" decoding="async">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#0b0f1a] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                            <span
+                                class="text-brand-400 text-xs font-bold uppercase tracking-widest mb-2">Branding</span>
+                            <h4 class="text-white text-2xl font-bold">Modern Tech Identity</h4>
+                        </div>
+                    </div>
+
+                    <!-- Work Item 4 -->
+                    <div x-show="filter === 'all' || filter === 'resin'"
+                        class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer bg-gradient-to-br from-brand-600/20 to-pink-600/20 border border-white/10 flex items-center justify-center">
+                        <div class="text-center p-6">
+                            <div
+                                class="h-16 w-16 bg-brand-500/10 rounded-2xl flex items-center justify-center text-brand-500 mx-auto mb-4">
+                                <i data-lucide="sparkles" class="w-8 h-8" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="text-white font-bold text-lg">Custom Resin Clock</h4>
+                            <p class="text-slate-400 text-sm mt-2">Bespoke Interior Art</p>
+                        </div>
+                    </div>
+
+                    <!-- Work Item 5 -->
+                    <div x-show="filter === 'all' || filter === 'video'"
+                        class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer bg-gradient-to-br from-blue-600/20 to-indigo-600/20 border border-white/10 flex items-center justify-center">
+                        <div class="text-center p-6">
+                            <div
+                                class="h-16 w-16 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 mx-auto mb-4">
+                                <i data-lucide="camera" class="w-8 h-8" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="text-white font-bold text-lg">Portrait Retouching</h4>
+                            <p class="text-slate-400 text-sm mt-2">Professional Color Grade</p>
+                        </div>
+                    </div>
+
+                    <!-- Work Item 6 -->
+                    <div x-show="filter === 'all' || filter === 'logo'"
+                        class="group relative aspect-[4/5] rounded-3xl overflow-hidden cursor-pointer bg-gradient-to-br from-purple-600/20 to-orange-600/20 border border-white/10 flex items-center justify-center">
+                        <div class="text-center p-6">
+                            <div
+                                class="h-16 w-16 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-400 mx-auto mb-4">
+                                <i data-lucide="palette" class="w-8 h-8" aria-hidden="true"></i>
+                            </div>
+                            <h4 class="text-white font-bold text-lg">Minimalist Logo Pack</h4>
+                            <p class="text-slate-400 text-sm mt-2">Vector Identity Designs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="contact" class="py-24 px-6 lg:px-12 bg-gradient-to-b from-[#0d121f] to-[#0b0f1a]">
+            <div class="max-w-5xl mx-auto">
+                <div class="glass rounded-[3rem] p-12 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-12 opacity-10">
+                        <i data-lucide="mail-plus" class="w-64 h-64" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-12 relative z-10">
+                        <div>
+                            <h3 class="text-4xl font-outfit font-extrabold text-white mb-6">Let's Create Something <span
+                                    class="text-gradient">Extraordinary</span></h3>
+                            <p class="text-slate-400 mb-8 leading-relaxed">
+                                Ready to start your next creative project? Contact us today for a free consultation and
+                                quote. We are excited to hear your story.
+                            </p>
+
+                            <div class="space-y-6">
+                                <a href="https://wa.me/918806288365" target="_blank"
+                                    class="flex items-center gap-4 group/item">
+                                    <div
+                                        class="h-12 w-12 bg-green-500/10 rounded-xl flex items-center justify-center text-green-500 group-hover/item:bg-green-500 group-hover/item:text-white transition-all">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                                            <path
+                                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">WhatsApp Us
+                                        </p>
+                                        <p class="text-white">+91 88062 88365</p>
+                                    </div>
+                                </a>
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="h-12 w-12 bg-pink-500/10 rounded-xl flex items-center justify-center text-pink-400">
+                                        <i data-lucide="map-pin"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Visit Us
+                                        </p>
+                                        <p class="text-white">Kolhapur, Maharashtra, India</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form x-data="{ 
+                                    isSubmitting: false, 
+                                    showSuccess: false, 
+                                    service: 'Select Service', 
+                                    dropdownOpen: false,
+                                    submitForm() {
+                                        this.isSubmitting = true;
+                                        setTimeout(() => {
+                                            this.isSubmitting = false;
+                                            this.showSuccess = true;
+                                            this.$nextTick(() => { if (this.$refs.success) this.$refs.success.focus(); });
+                                            setTimeout(() => this.showSuccess = false, 5000);
+                                        }, 2000);
+                                    }
+                                }" @submit.prevent="submitForm()" class="space-y-4">
+
+                            <!-- Success Greeting -->
+                            <div x-show="showSuccess" x-transition:enter="transition ease-out duration-500"
+                                x-transition:enter-start="opacity-0 -translate-y-4"
+                                x-transition:enter-end="opacity-100 translate-y-0" role="status" aria-live="polite"
+                                tabindex="-1" x-ref="success"
+                                class="bg-green-500/10 border border-green-500/20 p-6 rounded-2xl text-center mb-4">
+                                <div
+                                    class="h-12 w-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i data-lucide="check" class="text-white" aria-hidden="true"></i>
+                                </div>
+                                <h4 class="text-white font-bold text-lg">Thank You!</h4>
+                                <p class="text-slate-400 text-sm">Your message has been sent. We'll get back to you
+                                    soon.</p>
+                            </div>
+
+                            <div x-show="!showSuccess" class="space-y-4">
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <input type="text" name="name" placeholder="Full Name" required
+                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-500/50 transition-all text-white placeholder:text-slate-500">
+                                    <input type="email" name="email" placeholder="Email Address" required
+                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-brand-500/50 transition-all text-white placeholder:text-slate-500">
+                                </div>
+
+                                <!-- Custom Select Dropdown -->
+                                <div class="relative">
+                                    <button @click="dropdownOpen = !dropdownOpen" :aria-expanded="dropdownOpen"
+                                        aria-haspopup="listbox" type="button"
+                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 flex items-center justify-between text-white focus:outline-none focus:border-brand-500/50 transition-all">
+                                        <span x-text="service" aria-live="polite"></span>
+                                        <i data-lucide="chevron-down" :class="dropdownOpen ? 'rotate-180' : ''"
+                                            aria-hidden="true" class="w-5 h-5 transition-transform"></i>
+                                    </button>
+
+                                    <div x-show="dropdownOpen" @click.away="dropdownOpen = false"
+                                        x-transition:enter="transition ease-out duration-200"
+                                        x-transition:enter-start="opacity-0 translate-y-2"
+                                        x-transition:enter-end="opacity-100 translate-y-0"
+                                        class="absolute z-50 mt-2 w-full glass rounded-2xl overflow-hidden shadow-2xl"
+                                        role="listbox">
+                                        <template
+                                            x-for="option in ['Photo & Video Editing', 'Logo & Branding', 'Resin Arts']">
+                                            <div @click="service = option; dropdownOpen = false" role="option"
+                                                tabindex="0"
+                                                class="px-6 py-3 hover:bg-brand-500/20 cursor-pointer transition-colors text-white text-sm border-b border-white/5 last:border-0"
+                                                x-text="option"></div>
+                                        </template>
+                                    </div>
+                                    <input type="hidden" name="service" :value="service">
+                                    <textarea name="message" placeholder="Tell us about your project..." rows="4"
+                                        required
+                                        class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 mt-5 focus:outline-none focus:border-brand-500/50 transition-all text-white placeholder:text-slate-500"></textarea>
+                                </div>
+
+                                <button type="submit" :disabled="isSubmitting" :aria-busy="isSubmitting"
+                                    class="w-full py-4 bg-brand-500 text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-brand-600 transition-all shadow-xl shadow-brand-500/20 group disabled:opacity-70 disabled:cursor-not-allowed overflow-hidden relative">
+
+                                    <!-- Button Content -->
+                                    <span x-show="!isSubmitting" class="flex items-center gap-2">
+                                        Send Message
+                                        <i data-lucide="send" aria-hidden="true"
+                                            class="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                                    </span>
+
+                                    <!-- Loading State -->
+                                    <span x-show="isSubmitting" class="flex items-center gap-2">
+                                        <div
+                                            class="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin">
+                                        </div>
+                                        Sending...
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 lg:px-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="flex items-center gap-2">
+                <div class="h-8 w-8 bg-brand-500 rounded-lg flex items-center justify-center">
+                    <span class="text-white font-outfit font-extrabold text-sm">S</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-white font-outfit font-bold text-sm tracking-tight">Sawant</span>
+                    <span class="text-brand-400 font-outfit font-medium text-[10px] tracking-widest uppercase">Designs &
+                        Arts</span>
+                </div>
+            </div>
+
+            <p class="text-slate-500 text-sm">&copy; 2025 Sawant Designs & Arts. All rights reserved.</p>
+
+            <div class="flex items-center gap-4">
+                <a href="#"
+                    class="h-10 w-10 glass rounded-full flex items-center justify-center text-slate-400 hover:text-brand-500 hover:border-brand-500/50 transition-all"><i
+                        data-lucide="instagram" class="w-5 h-5" aria-hidden="true"></i></a>
+                <a href="#"
+                    class="h-10 w-10 glass rounded-full flex items-center justify-center text-slate-400 hover:text-brand-500 hover:border-brand-500/50 transition-all"><i
+                        data-lucide="youtube" class="w-5 h-5"></i></a>
+                <a href="#"
+                    class="h-10 w-10 glass rounded-full flex items-center justify-center text-slate-400 hover:text-brand-500 hover:border-brand-500/50 transition-all"><i
+                        data-lucide="linkedin" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/918806288365" target="_blank" aria-label="Chat with us on WhatsApp"
+        class="fixed bottom-8 right-8 z-[60] h-14 w-14 bg-green-500 rounded-full flex items-center justify-center text-white shadow-2xl hover:scale-110 hover:bg-green-600 transition-all duration-300 group">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"
+            aria-hidden="true" focusable="false">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        <span
+            class="absolute right-full mr-4 bg-white text-slate-800 text-xs font-bold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl">
+            Chat with us!
+        </span>
+    </a>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        // Make generated icons non-focusable and decorative
+        document.querySelectorAll('svg').forEach(svg => {
+            svg.setAttribute('aria-hidden', 'true');
+            svg.setAttribute('focusable', 'false');
+        });
+
+        // Loader Implementation
+        function skipLoader() {
+            const loader = document.getElementById('loader');
+            if (!loader) return;
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.visibility = 'hidden', 300);
+        }
+
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.visibility = 'hidden';
+                }, 800);
+            }, 1500);
+        });
+
+        // Allow users to dismiss loader with Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                skipLoader();
+            }
+        });
+    </script>
+</body>
+
+</html>
