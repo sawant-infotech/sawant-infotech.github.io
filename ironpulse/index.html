@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="IronPulse - A comprehensive Gym Management System with modern Angular frontend and robust PHP backend. Manage members, attendance, payments, and generate detailed reports.">
+    <meta name="keywords"
+        content="Gym Management System, IronPulse, Fitness Management, Member Management, Attendance Tracking, Payment System, Gym Software, fitness center management">
+    <meta name="author" content="Sawant Infotech">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#8b5cf6">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sawantinfotech.in/ironpulse/">
+    <meta property="og:title" content="IronPulse - Professional Gym Management System">
+    <meta property="og:description"
+        content="Streamline your gym operations with IronPulse. The all-in-one solution for member management, attendance, and financial tracking.">
+    <meta property="og:image" content="https://sawantinfotech.in/ironpulse/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sawantinfotech.in/ironpulse/">
+    <meta property="twitter:title" content="IronPulse - Professional Gym Management System">
+    <meta property="twitter:description"
+        content="Streamline your gym operations with IronPulse. The all-in-one solution for member management, attendance, and financial tracking.">
+    <meta property="twitter:image" content="https://sawantinfotech.in/ironpulse/logo.png">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://sawantinfotech.in/ironpulse/">
+
+    <title>IronPulse - Professional Gym Management System | Sawant Infotech</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --primary-glow: rgba(139, 92, 246, 0.5);
+            --secondary: #06b6d4;
+            --accent: #f43f5e;
+            --bg-deep: #030712;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --text-main: #f9fafb;
+            --text-dim: #9ca3af;
+            --border: rgba(255, 255, 255, 0.1);
+            --glass: rgba(255, 255, 255, 0.03);
+            --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-heading: 'Outfit', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        html,
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            background-image:
+                radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Animated Background Elements */
+        .bg-mesh {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(circle at 50% 50%, black, transparent);
+        }
+
+        .blob {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: var(--primary);
+            filter: blur(120px);
+            opacity: 0.15;
+            border-radius: 50%;
+            z-index: -1;
+            animation: float 20s infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(100px, 50px) scale(1.2);
+            }
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        header.scrolled {
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(16px);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 101;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 12rem 0 8rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+            background: linear-gradient(to bottom, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .cta-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px var(--primary-glow);
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            color: white;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(8px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Showcase Section */
+        .showcase {
+            padding: 4rem 0;
+            perspective: 2000px;
+        }
+
+        .mockup-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 0.8rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transform: rotateX(10deg);
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff;
+            /* Match dashboard background */
+        }
+
+        .mockup-container .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            display: block;
+        }
+
+        .mockup-container .slide.active {
+            opacity: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            left: -24px;
+            right: -24px;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .slider-btn {
+            background: var(--bg-deep);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            pointer-events: auto;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 1100px) {
+            .slider-controls {
+                left: 10px;
+                right: 10px;
+            }
+        }
+
+        .slider-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .mockup-container:hover {
+            transform: rotateX(0deg) scale(1.02);
+        }
+
+        /* Features */
+        .features {
+            padding: 10rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .f-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .f-card:hover {
+            border-color: var(--primary);
+            background: rgba(139, 92, 246, 0.05);
+            transform: translateY(-10px);
+        }
+
+        .f-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .f-card h3 {
+            margin-bottom: 1rem;
+            font-family: var(--font-heading);
+        }
+
+        .f-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Stats */
+        .stats {
+            padding: 5rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            background: var(--glass);
+            padding: 3rem;
+            border-radius: 32px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-val {
+            font-size: 3.5rem;
+            font-weight: 800;
+            font-family: var(--font-heading);
+            background: linear-gradient(to bottom, #fff, var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--text-dim);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 8rem 0 4rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-dim);
+            margin-top: 1.5rem;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1.5rem;
+            font-family: var(--font-heading);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.75rem 0;
+            }
+
+            header.scrolled {
+                padding: 0.5rem 0;
+            }
+
+            .logo img {
+                height: 40px !important;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--bg-deep);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                backdrop-filter: blur(20px);
+                border-left: 1px solid var(--border);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+                z-index: 100;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                font-size: 1.25rem;
+                display: block;
+                padding: 1rem;
+            }
+
+            .header-actions {
+                display: none;
+            }
+
+            .hero {
+                padding: 8rem 0 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+                overflow-wrap: break-word;
+                width: 100%;
+            }
+
+            .badge {
+                white-space: normal;
+                display: inline-block;
+                max-width: 100%;
+                font-size: 0.75rem;
+                padding: 0.5rem 1rem;
+                line-height: 1.4;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+            }
+
+            .stat-val {
+                font-size: 2.75rem;
+            }
+
+            .features {
+                padding: 5rem 0;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 1.5rem auto 0;
+            }
+
+            .footer-links ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btns {
+                flex-direction: column;
+                padding: 0 2rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .showcase {
+                padding: 3rem 0;
+                perspective: none;
+            }
+
+            .mockup-container {
+                padding: 0.4rem;
+                border-radius: 12px;
+                transform: none !important;
+                max-width: 100%;
+            }
+
+            .slider-controls {
+                left: 0;
+                right: 0;
+                padding: 0 10px;
+            }
+
+            .slider-btn {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(5deg);
+            background-color: #128c7e;
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #25d366;
+            border-radius: 50%;
+            z-index: -1;
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-mesh"></div>
+    <div class="blob" style="top: -100px; right: -100px;"></div>
+    <div class="blob" style="bottom: -100px; left: -100px; background: var(--secondary);"></div>
+
+    <header id="main-header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="IronPulse Logo" style="height: 60px; width: auto;">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#showcase">Showcase</a></li>
+                    <li><a href="#stats">Performance</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="header-actions">
+                    <a href="https://wa.me/918806288365?text=Hello%20IronPulse%2C%20I%20would%20like%20to%20book%20a%20demo%20for%20the%20Gym%20Management%20System."
+                        target="_blank" class="btn btn-secondary"
+                        style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Book Demo</a>
+                </div>
+                <button class="mobile-menu-btn" id="mobile-toggle">
+                    <i data-lucide="menu"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero reveal">
+            <div class="container">
+                <div class="badge">Next Generation Gym Management</div>
+                <h1>Empower Your Fitness <br> <span style="color: var(--primary);">Enterprise</span></h1>
+                <p>The core engine for high-performance gyms. IronPulse streamlines every aspect of your facility with
+                    precision analytics and effortless management.</p>
+                <div class="cta-btns">
+                    <a href="https://wa.me/918806288365?text=Hello%20IronPulse%2C%20I%20am%20interested%20in%20the%20Gym%20Management%20System%20and%20would%20like%20to%20get%20started."
+                        target="_blank" class="btn btn-primary">Launch Project</a>
+                    <a href="#showcase" class="btn btn-secondary">Explore Platform</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Showcase Section -->
+        <section id="showcase" class="showcase reveal">
+            <div class="container">
+                <div class="mockup-container">
+                    <div class="slider-wrapper">
+                        <img src="dashboard.png" alt="IronPulse Dashboard 1" class="slide active">
+                        <img src="dashboard2.png" alt="IronPulse Dashboard 2" class="slide">
+                        <img src="dashboard3.png" alt="IronPulse Dashboard 3" class="slide">
+                        <img src="dashboard4.png" alt="IronPulse Dashboard 4" class="slide">
+                    </div>
+
+                    <div class="slider-controls">
+                        <button class="slider-btn" id="prev-slide" aria-label="Previous Slide">
+                            <i data-lucide="chevron-left"></i>
+                        </button>
+                        <button class="slider-btn" id="next-slide" aria-label="Next Slide">
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div style="padding: 1rem 0 0.5rem; text-align: center; color: var(--text-dim); font-size: 0.8rem;">
+                        <i data-lucide="info" style="width: 12px; height: 12px; vertical-align: middle;"></i>
+                        IronPulse Enterprise Management Platform - Multi-View Explorer
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Engineered for Excellence</h2>
+                    <p style="color: var(--text-dim);">A complete suite of tools designed to optimize your gym's
+                        operations.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="f-card reveal">
+                        <div class="f-icon"><i data-lucide="users"></i></div>
+                        <h3>Member Intelligence</h3>
+                        <p>Deep insights into member behavior, retention patterns, and automated checking systems.</p>
+                    </div>
+
+                    <div class="f-card reveal">
+                        <div class="f-icon"><i data-lucide="activity"></i></div>
+                        <h3>Live Performance</h3>
+                        <p>Track class attendance and facility usage in real-time with ultra-low latency updates.</p>
+                    </div>
+
+                    <div class="f-card reveal">
+                        <div class="f-icon"><i data-lucide="credit-card"></i></div>
+                        <h3>Smart Payments</h3>
+                        <p>Automated billing cycles, recurring subscriptions, and comprehensive financial forensic
+                            reporting.</p>
+                    </div>
+
+                    <div class="f-card reveal">
+                        <div class="f-icon"><i data-lucide="shield"></i></div>
+                        <h3>Enterprise Security</h3>
+                        <p>JWT-secured API layer with granular role-based access for multi-location gym chains.</p>
+                    </div>
+
+                    <div class="f-card reveal">
+                        <div class="f-icon"><i data-lucide="bar-chart-4"></i></div>
+                        <h3>Advanced Analytics</h3>
+                        <p>Predictive revenue modeling and churn analysis powered by sophisticated data engines.</p>
+                    </div>
+
+                    <div class="f-card reveal">
+                        <div class="f-icon"><i data-lucide="smartphone"></i></div>
+                        <h3>Mobile First</h3>
+                        <p>Manage your entire empire from the palm of your hand with a fully responsive cloud interface.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="stats" class="stats reveal">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-val">100%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-val">50ms</div>
+                        <div class="stat-label">Latency</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-val">24/7</div>
+                        <div class="stat-label">Support</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact/CTA Section -->
+        <section id="contact" class="hero reveal" style="padding: 8rem 0;">
+            <div class="container">
+                <h2>Ready to Scale Your <br> <span style="color: var(--secondary);">Fitness Business?</span></h2>
+                <p>Join the elite gyms using IronPulse to dominate their local market.</p>
+                <div class="cta-btns">
+                    <a href="https://wa.me/918806288365?text=Hello%20IronPulse%2C%20I%20want%20to%20get%20in%20touch%20regarding%20the%20Gym%20Management%20Software."
+                        target="_blank" class="btn btn-primary">Get In Touch</a>
+                    <a href="brochure.png" download="IronPulse_Brochure.png" class="btn btn-secondary">Download
+                        Brochure</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="logo.png" alt="IronPulse Logo"
+                            style="height: 80px; width: auto; margin-bottom: 1rem;">
+                    </div>
+                    <p>The definitive management solution for the modern fitness industry. Built for scale, engineered
+                        for performance.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#">Engine</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Insights</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="https://sawantinfotech.in/about" target="_blank">About Us</a></li>
+                        <li><a href="https://sawantinfotech.in/contact" target="_blank">Contact</a></li>
+                        <li><a href="mailto:sawant.infotech.14@gmail.com">Support Email</a></li>
+                        <li><a href="https://sawantinfotech.in/privacy-policy" target="_blank">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Social</h4>
+                    <ul>
+                        <li><a href="https://www.instagram.com/sawantinfotech/" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.linkedin.com/in/sawantinfotech" target="_blank">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid var(--border); padding-top: 2rem; text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+                &copy; 2025 IronPulse Gym Management System. Developed by Sawant Infotech.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/918806288365" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <div class="whatsapp-pulse"></div>
+        <i data-lucide="message-circle" style="width: 30px; height: 30px;"></i>
+    </a>
+
+    <script>
+        // Initialize Lucide
+        lucide.createIcons();
+
+        // Initialize Lenis
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // Header Transition
+        const header = document.getElementById('main-header');
+        lenis.on('scroll', (e) => {
+            if (e.animatedScroll > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth Scroll for Anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    lenis.scrollTo(target, {
+                        offset: -100,
+                        duration: 1.5
+                    });
+                }
+            });
+        });
+
+        // Parallax Effect for Blobs
+        window.addEventListener('scroll', () => {
+            const blobs = document.querySelectorAll('.blob');
+            const scrolled = window.pageYOffset;
+            blobs.forEach((blob, i) => {
+                const speed = 0.2 + (i * 0.1);
+                blob.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Dashboard Slider Logic
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prev-slide');
+        const nextBtn = document.getElementById('next-slide');
+        let currentSlide = 0;
+
+        function updateSlider(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateSlider(currentSlide);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlider(currentSlide);
+        });
+
+        // Mobile Menu Logic
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const body = document.body;
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            const isOpen = navLinks.classList.contains('active');
+            icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+            lucide.createIcons();
+            body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.querySelector('i').setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+                body.style.overflow = '';
+            });
+        });
+    </script>
+</body>
+
+</html>
