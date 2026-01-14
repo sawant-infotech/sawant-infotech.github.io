@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Shubham Sambhaji Sawant | Full Stack Developer</title>
+    <meta name="title" content="Shubham Sambhaji Sawant | Full Stack Developer">
+    <meta name="description"
+        content="Portfolio of Shubham Sambhaji Sawant, a Senior Full Stack Architect with 4+ years of experience in Angular, NestJS, Ionic, and Enterprise Solutions.">
+    <meta name="keywords"
+        content="Shubham Sawant, Full Stack Developer, Angular Developer, NestJS Expert, Ionic Developer, Web Development, Software Architect, Sawant Infotech">
+    <meta name="author" content="Shubham Sambhaji Sawant">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://sawantinfotech.in/shubham/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sawantinfotech.in/shubham/">
+    <meta property="og:title" content="Shubham Sambhaji Sawant | Full Stack Developer">
+    <meta property="og:description"
+        content="Senior Full Stack Architect specializing in building scalable enterprise applications with Angular, NestJS, and Ionic.">
+    <meta property="og:image" content="https://sawantinfotech.in/shubham/me.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sawantinfotech.in/shubham/">
+    <meta property="twitter:title" content="Shubham Sambhaji Sawant | Full Stack Developer">
+    <meta property="twitter:description"
+        content="Senior Full Stack Architect specializing in building scalable enterprise applications with Angular, NestJS, and Ionic.">
+    <meta property="twitter:image" content="https://sawantinfotech.in/shubham/me.png">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Shubham Sambhaji Sawant",
+      "url": "https://sawantinfotech.in/shubham/",
+      "image": "https://sawantinfotech.in/shubham/me.png",
+      "jobTitle": "Senior Full Stack Architect",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Self Employed / Consultancy"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/shubhams1401",
+        "https://github.com/shubhams1401-sawant/",
+        "https://sawantinfotech.in",
+        "https://instagram.com/shubhams1401"
+      ],
+      "knowsAbout": ["Angular", "NestJS", "Ionic", "Full Stack Development", "Software Architecture"]
+    }
+    </script>
+
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #8b5cf6;
+            --dark: #0f172a;
+            --darker: #020617;
+            --accent: #60a5fa;
+        }
+
+        /* Lenis Smooth Scroll */
+        html.lenis,
+        html.lenis body {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--darker);
+            color: #f8fafc;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-heading {
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Selection */
+        ::selection {
+            background: rgba(59, 130, 246, 0.3);
+            color: white;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+
+        /* UI Elements */
+        .glass {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, var(--primary), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            filter: blur(40px);
+            z-index: -1;
+            transform: scale(0.8);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .glass-card:hover::before {
+            opacity: 0.15;
+            transform: scale(1.2);
+        }
+
+        .glass-card:hover i,
+        .glass-card:hover svg {
+            transform: scale(1.2) translateY(-5px);
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .glass-card:hover svg {
+            transform: scale(1.2) translateY(-5px);
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .pro-shadow {
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .pro-shadow:hover {
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .btn-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.4s ease;
+        }
+
+        .btn-gradient:hover::before {
+            opacity: 1;
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.6rem 1.4rem;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-link {
+            position: relative;
+            color: #94a3b8;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .blob {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @media (min-width: 768px) {
+            .blob {
+                width: 500px;
+                height: 500px;
+            }
+        }
+
+        .animated-bg {
+            background: radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 1) 0%, rgba(2, 6, 23, 1) 100%);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes float-slow {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(15px, -20px);
+            }
+        }
+
+        @keyframes float-slow-reverse {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(-15px, 20px);
+            }
+        }
+
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-slow {
+            animation: float-slow 8s ease-in-out infinite;
+        }
+
+        .animate-float-slow-reverse {
+            animation: float-slow-reverse 9s ease-in-out infinite;
+        }
+
+        .glass-mobile {
+            background: rgba(2, 6, 23, 0.95) !important;
+            backdrop-filter: blur(20px) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden animated-bg w-full relative">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass py-5 px-6 md:px-16 flex justify-between items-center transition-all duration-500"
+        id="navbar">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full border border-blue-500/30 overflow-hidden hidden md:block">
+                <img src="me.png" alt="S.Sawant" class="w-full h-full object-cover">
+            </div>
+            <div class="text-2xl font-extrabold font-heading gradient-text tracking-tighter">Shubham.Sawant</div>
+        </div>
+        <div class="hidden md:flex gap-10 items-center">
+            <a href="#home" class="nav-link font-medium text-sm">Home</a>
+            <a href="#about" class="nav-link font-medium text-sm">About</a>
+            <a href="#skills" class="nav-link font-medium text-sm">Skills</a>
+            <a href="#experience" class="nav-link font-medium text-sm">Experience</a>
+            <a href="#contact" class="nav-link font-medium text-sm">Contact</a>
+            <a href="mailto:shubhams1401@gmail.com"
+                class="btn-gradient px-7 py-3 rounded-full font-bold text-sm text-white shadow-lg shadow-blue-500/20">Hire
+                Me</a>
+        </div>
+        <button class="md:hidden text-white" id="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" style="padding-top: 8rem !important;"
+        class="relative min-h-screen flex items-center pt-32 lg:pt-0 px-6 md:px-16 overflow-hidden">
+        <div class="blob -top-10 -left-10"></div>
+        <div class="blob -bottom-10 -right-10 opacity-20"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center relative z-10">
+            <!-- Left Side: Content -->
+            <div data-aos="fade-right" data-aos-duration="1200">
+                <div
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass mb-8 border border-blue-500/20 shadow-lg shadow-blue-500/5">
+                    <span
+                        class="flex h-2.5 w-2.5 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.6)] animate-pulse"></span>
+                    <span
+                        class="text-[10px] md:text-xs font-extrabold tracking-[0.2em] uppercase text-blue-400">Available
+                        for new opportunities</span>
+                </div>
+
+                <h1 class="text-4xl md:text-7xl xl:text-8xl font-black mb-8 leading-[1.1] tracking-tight text-white">
+                    Crafting <br> <span class="gradient-text">Digital Value.</span>
+                </h1>
+
+                <p class="text-slate-400 text-lg md:text-xl max-w-xl mb-12 font-medium leading-relaxed">
+                    Full Stack Developer with <span class="text-white border-b-2 border-blue-500/50">4 years</span> of
+                    experience in turning complex problems into elegant, high-performance solutions.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-6 mb-16">
+                    <a href="#contact"
+                        class="btn-gradient px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 group text-white shadow-2xl shadow-blue-500/20 transition-all hover:-translate-y-1">
+                        Start a Project <i
+                            class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                    <a href="resume.html"
+                        class="glass px-10 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-white/5 transition-all text-white border border-white/10 hover:-translate-y-1">
+                        View CV <i class="fas fa-download text-blue-400"></i>
+                    </a>
+                </div>
+
+                <div class="flex gap-12 border-t border-white/5 pt-10">
+                    <div class="group">
+                        <div class="text-4xl font-black mb-1 text-white group-hover:gradient-text transition-all counter"
+                            data-target="4">0</div>
+                        <div class="text-[9px] text-slate-500 tracking-[0.2em] font-bold uppercase">Years Exp</div>
+                    </div>
+                    <div class="group">
+                        <div class="text-4xl font-black mb-1 text-white group-hover:gradient-text transition-all counter"
+                            data-target="24">0</div>
+                        <div class="text-[9px] text-slate-500 tracking-[0.2em] font-bold uppercase">Projects</div>
+                    </div>
+                    <div class="group">
+                        <div class="text-4xl font-black mb-1 text-white group-hover:gradient-text transition-all counter"
+                            data-target="100">0</div>
+                        <div class="text-[9px] text-slate-500 tracking-[0.2em] font-bold uppercase">Success</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Image Presentation -->
+            <div class="relative flex justify-center lg:justify-end" data-aos="fade-left" data-aos-duration="1200">
+                <div class="relative w-full max-w-[450px]">
+                    <!-- Main Image Frame -->
+                    <div
+                        class="relative z-10 rounded-[3rem] overflow-hidden border border-white/10 shadow-3xl bg-slate-900 aspect-[4/5] float transition-all duration-700 hover:scale-[1.02]">
+                        <img src="me.png" alt="Shubham Sawant" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darker/80 via-transparent to-transparent">
+                        </div>
+                    </div>
+
+                    <!-- Decorative Elements -->
+                    <div class="absolute -top-10 -left-10 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl animate-pulse">
+                    </div>
+                    <div
+                        class="absolute -bottom-10 -right-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-700">
+                    </div>
+
+                    <!-- Floating Card 1: Skill Badge -->
+                    <div
+                        class="absolute top-1/4 -left-12 z-20 glass p-4 rounded-2xl border border-white/10 shadow-2xl hidden md:flex items-center gap-3 animate-float-slow">
+                        <div class="w-10 h-10 rounded-xl bg-red-500/20 flex items-center justify-center">
+                            <i class="fas fa-code text-red-500 text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="text-[10px] font-bold text-slate-500 uppercase">Expert In</div>
+                            <div class="text-sm font-black text-white">Full Stack</div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Card 2: Location/Mobile -->
+                    <div
+                        class="absolute bottom-1/4 -right-8 z-20 glass p-4 rounded-2xl border border-white/10 shadow-2xl hidden md:flex items-center gap-3 animate-float-slow-reverse">
+                        <div class="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center">
+                            <i class="fas fa-mobile-screen-button text-orange-500 text-lg"></i>
+                        </div>
+                        <div>
+                            <div class="text-[10px] font-bold text-slate-500 uppercase">Tech Lead</div>
+                            <div class="text-sm font-black text-white">Ionic & Nest</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 px-6 md:px-16 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid min-[1025px]:grid-cols-2 gap-20 items-center">
+            <div data-aos="fade-right" data-aos-duration="1000" class="relative hidden min-[1025px]:block">
+                <div
+                    class="relative z-10 rounded-[2.5rem] overflow-hidden border border-white/10 shadow-3xl bg-slate-900 aspect-[4/5] float group">
+                    <img src="me.png" alt="Shubham Sambhaji Sawant"
+                        class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-darker via-transparent to-transparent opacity-60">
+                    </div>
+                </div>
+                <!-- Experience Badge floating -->
+                <div
+                    class="absolute -bottom-10 -right-10 z-20 glass p-8 rounded-3xl border border-white/10 shadow-2xl backdrop-blur-3xl hidden md:block">
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+                            <i class="fas fa-medal text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-black text-white">Shubham S.</div>
+                            <div class="text-sm text-slate-400 font-semibold tracking-wide">Professional Developer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-left" data-aos-duration="1000">
+                <span class="text-blue-500 font-extrabold tracking-widest uppercase text-xs mb-4 block">About the
+                    architect</span>
+                <h2 class="text-5xl md:text-7xl font-black mb-8 leading-tight text-white">Solving <span
+                        class="gradient-text">Real-World</span> Problems.</h2>
+                <div class="space-y-6 text-slate-400 text-lg font-medium leading-relaxed">
+                    <p>
+                        I am <span class="text-white">Shubham Sambhaji Sawant</span>, a results-driven Full Stack
+                        Developer passionate about building high-quality, user-centric applications. With 4 years of
+                        deep-dive experience in the tech ecosystem, I bridge the gap between complex backend logic and
+                        pixel-perfect frontends.
+                    </p>
+                    <p>
+                        My expertise spans across modern frameworks like <span class="text-white">Angular</span> and
+                        <span class="text-white">NestJS</span>, enabling me to build scalable architectures that grow
+                        with your business. Whether it's a mobile app with <span class="text-white">Ionic</span> or a
+                        custom enterprise dashboard, I deliver excellence as standard.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6 mt-12">
+                    <div
+                        class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 transition-all pro-shadow">
+                        <i class="fas fa-bolt text-blue-500 mb-4 text-3xl"></i>
+                        <h4 class="font-bold text-white text-xl mb-1">Performance</h4>
+                        <p class="text-slate-500 text-sm">Optimized for speed and SEO.</p>
+                    </div>
+                    <div
+                        class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-purple-500/30 transition-all pro-shadow">
+                        <i class="fas fa-layer-group text-purple-500 mb-4 text-3xl"></i>
+                        <h4 class="font-bold text-white text-xl mb-1">Scalability</h4>
+                        <p class="text-slate-500 text-sm">Future-proof architecture.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-32 px-6 md:px-16 relative">
+        <div class="blob middle-0 left-0 opacity-50"></div>
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8" data-aos="fade-up">
+                <div class="max-w-2xl">
+                    <span class="text-blue-500 font-extrabold tracking-widest uppercase text-xs mb-4 block">Modern
+                        Stack</span>
+                    <h2 class="text-5xl md:text-7xl font-black leading-tight mb-0 text-white">Tech <span
+                            class="gradient-text">Mastery.</span></h2>
+                </div>
+                <p class="text-slate-500 max-w-sm text-lg font-medium mb-4">
+                    Leveraging the most powerful tools in web development to ensure high standards of quality.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3 md:gap-6">
+                <!-- Skill Card Template -->
+                <div class="w-[calc(50%-0.5rem)] md:w-52 lg:w-60 p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-red-500/30 transition-all pro-shadow group text-center"
+                    data-aos="zoom-in" data-aos-delay="100">
+                    <i
+                        class="fab fa-angular text-red-500 mb-4 text-3xl transform group-hover:scale-110 transition-transform mx-auto block"></i>
+                    <h3 class="font-bold text-white text-lg">Angular</h3>
+                    <p class="text-slate-500 text-xs mt-1">Frontend Framework</p>
+                </div>
+
+                <div class="w-[calc(50%-0.5rem)] md:w-52 lg:w-60 p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-red-600/30 transition-all pro-shadow group text-center"
+                    data-aos="zoom-in" data-aos-delay="200">
+                    <i
+                        class="fas fa-server text-red-600 mb-4 text-3xl transform group-hover:scale-110 transition-transform mx-auto block"></i>
+                    <h3 class="font-bold text-white text-lg">NestJS</h3>
+                    <p class="text-slate-500 text-xs mt-1">Backend Node.js</p>
+                </div>
+
+                <div class="w-[calc(50%-0.5rem)] md:w-52 lg:w-60 p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-blue-400/30 transition-all pro-shadow group text-center"
+                    data-aos="zoom-in" data-aos-delay="300">
+                    <i
+                        class="fas fa-mobile-alt text-blue-400 mb-4 text-3xl transform group-hover:scale-110 transition-transform mx-auto block"></i>
+                    <h3 class="font-bold text-white text-lg">Ionic</h3>
+                    <p class="text-slate-500 text-xs mt-1">Cross-Platform Apps</p>
+                </div>
+
+                <div class="w-[calc(50%-0.5rem)] md:w-52 lg:w-60 p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-cyan-400/30 transition-all pro-shadow group text-center"
+                    data-aos="zoom-in" data-aos-delay="400">
+                    <i
+                        class="fas fa-wind text-cyan-400 mb-4 text-3xl transform group-hover:scale-110 transition-transform mx-auto block"></i>
+                    <h3 class="font-bold text-white text-lg">Tailwind</h3>
+                    <p class="text-slate-500 text-xs mt-1">Utility-First CSS</p>
+                </div>
+
+                <div class="w-[calc(50%-0.5rem)] md:w-52 lg:w-60 p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-slate-400/30 transition-all pro-shadow group text-center"
+                    data-aos="zoom-in" data-aos-delay="500">
+                    <i
+                        class="fab fa-php text-slate-400 mb-4 text-3xl transform group-hover:scale-110 transition-transform mx-auto block"></i>
+                    <h3 class="font-bold text-white text-lg">PHP</h3>
+                    <p class="text-slate-500 text-xs mt-1">Server-Side Logic</p>
+                </div>
+
+                <div class="w-[calc(50%-0.5rem)] md:w-52 lg:w-60 p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-purple-500/30 transition-all pro-shadow group text-center"
+                    data-aos="zoom-in" data-aos-delay="600">
+                    <i
+                        class="fab fa-bootstrap text-purple-500 mb-4 text-3xl transform group-hover:scale-110 transition-transform mx-auto block"></i>
+                    <h3 class="font-bold text-white text-lg">Bootstrap</h3>
+                    <p class="text-slate-500 text-xs mt-1">Responsive UI</p>
+                </div>
+
+                <div class="w-[calc(50%-0.5rem)] md:w-52 lg:w-60 p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-blue-500/30 transition-all pro-shadow group text-center"
+                    data-aos="zoom-in" data-aos-delay="700">
+                    <i
+                        class="fas fa-database text-blue-500 mb-4 text-3xl transform group-hover:scale-110 transition-transform mx-auto block"></i>
+                    <h3 class="font-bold text-white text-lg">MySQL</h3>
+                    <p class="text-slate-500 text-xs mt-1">Relational Database</p>
+                </div>
+
+                <div class="w-[calc(50%-0.5rem)] md:w-52 lg:w-60 p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-orange-500/30 transition-all pro-shadow group text-center"
+                    data-aos="zoom-in" data-aos-delay="800">
+                    <i
+                        class="fas fa-table text-orange-500 mb-4 text-3xl transform group-hover:scale-110 transition-transform mx-auto block"></i>
+                    <h3 class="font-bold text-white text-lg leading-tight">SQL Server</h3>
+                    <p class="text-slate-500 text-xs mt-1">Enterprise DB</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-32 px-6 md:px-16 relative bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <span class="text-blue-500 font-extrabold tracking-widest uppercase text-xs mb-4 block">What I
+                    Offer</span>
+                <h2 class="text-4xl md:text-6xl font-black mb-6 text-white leading-tight">Premium <span
+                        class="gradient-text">Services.</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1: Websites -->
+                <div class="glass-card p-10 rounded-[2.5rem] relative group border-white/5" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-8 group-hover:bg-blue-500/20 transition-all">
+                        <i class="fas fa-laptop-code text-blue-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-4">Web Development</h3>
+                    <p class="text-slate-400 font-medium leading-relaxed mb-6">
+                        Custom-built solutions tailored to your needs. From lightning-fast <span
+                            class="text-white">Static Sites</span> to complex <span class="text-white">Dynamic Web
+                            Apps</span> using Angular & NestJS.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm text-slate-500 font-bold">
+                            <i class="fas fa-check text-blue-500"></i> Corporate Portfolios
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-500 font-bold">
+                            <i class="fas fa-check text-blue-500"></i> E-Commerce Platforms
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-500 font-bold">
+                            <i class="fas fa-check text-blue-500"></i> Admin Dashboards
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 2: Mobile Apps -->
+                <div class="glass-card p-10 rounded-[2.5rem] relative group border-white/5" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-8 group-hover:bg-purple-500/20 transition-all">
+                        <i class="fas fa-mobile-screen-button text-purple-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-4">App Development</h3>
+                    <p class="text-slate-400 font-medium leading-relaxed mb-6">
+                        Hybrid mobile applications that run flawlessly on both <span class="text-white">Android</span> &
+                        <span class="text-white">iOS</span> using the power of Ionic Framework.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm text-slate-500 font-bold">
+                            <i class="fas fa-check text-purple-500"></i> Cross-Platform
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-500 font-bold">
+                            <i class="fas fa-check text-purple-500"></i> Play Store Publish
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-500 font-bold">
+                            <i class="fas fa-check text-purple-500"></i> Real-time Sync
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Service 3: Utility APIs -->
+                <div class="glass-card p-10 rounded-[2.5rem] relative group border-white/5" data-aos="fade-up"
+                    data-aos-delay="300">
+                    <div
+                        class="w-16 h-16 rounded-2xl bg-green-500/10 flex items-center justify-center mb-8 group-hover:bg-green-500/20 transition-all">
+                        <i class="fas fa-network-wired text-green-500 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-4">Utility APIs</h3>
+                    <p class="text-slate-400 font-medium leading-relaxed mb-6">
+                        Robust backend architecture and microservices designed for high performance, security, and
+                        scalability.
+                    </p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3 text-sm text-slate-500 font-bold">
+                            <i class="fas fa-check text-green-500"></i> RESTful Services
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-500 font-bold">
+                            <i class="fas fa-check text-green-500"></i> Payment Gateways
+                        </li>
+                        <li class="flex items-center gap-3 text-sm text-slate-500 font-bold">
+                            <i class="fas fa-check text-green-500"></i> Cloud Integration
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="py-32 px-6 md:px-16 bg-white/[0.01]">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <span class="text-blue-500 font-extrabold tracking-widest uppercase text-xs mb-4 block">The
+                    Journey</span>
+                <h2 class="text-5xl md:text-7xl font-black mb-6 text-white leading-tight">Professional <br> <span
+                        class="gradient-text">Continuum.</span></h2>
+            </div>
+
+            <div class="space-y-16">
+                <!-- Education Item -->
+                <div class="grid md:grid-cols-[150px_1fr] gap-8 md:gap-20 items-start" data-aos="fade-up">
+                    <div class="pt-2 text-left md:text-right">
+                        <span class="text-white font-black text-2xl">Academic</span>
+                        <div class="text-blue-500 font-bold text-xs uppercase tracking-widest mt-1">Qualification</div>
+                    </div>
+                    <div class="glass-card p-10 rounded-[2.5rem] relative border-blue-500/20">
+                        <div
+                            class="absolute -left-[54px] top-10 w-6 h-6 rounded-full bg-blue-500 border-4 border-darker hidden md:block shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-2">Master of Computer Applications (MCA)</h3>
+                        <p class="text-blue-400 font-bold mb-4">Post Graduate Degree</p>
+                        <p class="text-slate-400 font-medium leading-relaxed">
+                            Advanced specialization in software engineering, database management, and modern application
+                            development architectures.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item -->
+                <div class="grid md:grid-cols-[150px_1fr] gap-8 md:gap-20 items-start" data-aos="fade-up">
+                    <div class="pt-2 text-left md:text-right">
+                        <span class="text-white font-black text-2xl">Present</span>
+                        <div class="text-blue-500 font-bold text-xs uppercase tracking-widest mt-1">Ongoing</div>
+                    </div>
+                    <div class="glass-card p-10 rounded-[2.5rem] relative">
+                        <div
+                            class="absolute -left-[54px] top-10 w-6 h-6 rounded-full bg-blue-500 border-4 border-darker hidden md:block">
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-2">Senior Full Stack Architect</h3>
+                        <p class="text-blue-400 font-bold mb-6">Self Employed / Consultancy</p>
+                        <p class="text-slate-400 font-medium leading-relaxed mb-6">
+                            Leading digital transformation projects for medium-scale enterprises. Architecting
+                            end-to-end solutions using NestJS for microservices and Angular for sophisticated user
+                            interfaces.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span
+                                class="skill-badge text-[10px] font-bold text-white uppercase tracking-wider">Strategy</span>
+                            <span
+                                class="skill-badge text-[10px] font-bold text-white uppercase tracking-wider">Architecture</span>
+                            <span class="skill-badge text-[10px] font-bold text-white uppercase tracking-wider">Clean
+                                Code</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-[150px_1fr] gap-8 md:gap-20 items-start" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div class="pt-2 text-left md:text-right">
+                        <span class="text-slate-500 font-black text-2xl">2021</span>
+                        <div class="text-slate-600 font-bold text-xs uppercase tracking-widest mt-1">Started</div>
+                    </div>
+                    <div class="glass-card p-10 rounded-[2.5rem] relative">
+                        <div
+                            class="absolute -left-[54px] top-10 w-6 h-6 rounded-full bg-slate-700 border-4 border-darker hidden md:block">
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-2">Systems Developer</h3>
+                        <p class="text-slate-500 font-bold mb-6">TechCore Solutions</p>
+                        <p class="text-slate-400 font-medium leading-relaxed">
+                            Focused on developing hybrid mobile applications using Ionic. Implemented real-time features
+                            using WebSockets and managed complex data structures in PHP backends.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-[150px_1fr] gap-8 md:gap-20 items-start" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <div class="pt-2 text-left md:text-right">
+                        <span class="text-slate-500 font-black text-2xl">2020</span>
+                        <div class="text-slate-600 font-bold text-xs uppercase tracking-widest mt-1">Foundation</div>
+                    </div>
+                    <div class="glass-card p-10 rounded-[2.5rem] relative">
+                        <div
+                            class="absolute -left-[54px] top-10 w-6 h-6 rounded-full bg-slate-800 border-4 border-darker hidden md:block">
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-2">Web Contributor</h3>
+                        <p class="text-slate-600 font-bold mb-6">InnoLabs</p>
+                        <p class="text-slate-400 font-medium leading-relaxed">
+                            Began professional journey building responsive web interfaces. Mastered the fundamentals of
+                            Bootstrap and native JavaScript while contributing to diverse client projects.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6 md:px-16 relative overflow-hidden">
+        <div class="blob w-64 h-64 md:w-[800px] md:h-[800px] -bottom-10 -right-10 opacity-30"></div>
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div data-aos="fade-right">
+                    <span
+                        class="text-blue-500 font-extrabold tracking-widest uppercase text-xs mb-4 block">Communication</span>
+                    <h2 class="text-5xl md:text-8xl font-black mb-10 leading-[0.9] text-white tracking-tighter">Let's
+                        build <br> the <span class="gradient-text">Future.</span></h2>
+
+                    <div class="space-y-10">
+                        <div class="flex items-center gap-8 group cursor-pointer">
+                            <div
+                                class="w-14 h-14 rounded-2xl glass flex items-center justify-center border-white/5 group-hover:bg-blue-500 transition-all duration-500 group-hover:scale-110">
+                                <i
+                                    class="fas fa-envelope text-blue-500 group-hover:text-white transition-all text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Send a
+                                    message</div>
+                                <div
+                                    class="text-xl md:text-2xl font-black text-white group-hover:text-blue-400 transition-colors">
+                                    shubhams1401@gmail.com</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-8 group cursor-pointer">
+                            <div
+                                class="w-14 h-14 rounded-2xl glass flex items-center justify-center border-white/5 group-hover:bg-green-500 transition-all duration-500 group-hover:scale-110">
+                                <i
+                                    class="fas fa-phone text-green-500 group-hover:text-white transition-all text-xl"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Direct Line
+                                </div>
+                                <div
+                                    class="text-xl md:text-2xl font-black text-white group-hover:text-green-400 transition-colors">
+                                    8806288365</div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6 pt-6">
+                            <a href="https://github.com/shubhams1401-sawant/" target="_blank"
+                                class="w-16 h-16 rounded-2xl glass flex items-center justify-center border-white/5 hover:bg-slate-800 hover:border-white/50 transition-all duration-500 group shadow-lg">
+                                <i class="fab fa-github text-white text-2xl group-hover:scale-110 transition-all"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/shubhams1401" target="_blank"
+                                class="w-16 h-16 rounded-2xl glass flex items-center justify-center border-white/5 hover:bg-blue-600/20 hover:border-blue-500/50 transition-all duration-500 group shadow-lg">
+                                <i
+                                    class="fab fa-linkedin-in text-white text-2xl group-hover:scale-110 transition-all"></i>
+                            </a>
+                            <a href="https://instagram.com/shubhams1401" target="_blank"
+                                class="w-16 h-16 rounded-2xl glass flex items-center justify-center border-white/5 hover:bg-pink-600/20 hover:border-pink-500/50 transition-all duration-500 group shadow-lg">
+                                <i
+                                    class="fab fa-instagram text-white text-2xl group-hover:scale-110 transition-all"></i>
+                            </a>
+                            <a href="https://wa.me/918806288365" target="_blank"
+                                class="w-16 h-16 rounded-2xl glass flex items-center justify-center border-white/5 hover:bg-green-600/20 hover:border-green-500/50 transition-all duration-500 group shadow-lg">
+                                <i class="fab fa-whatsapp text-white text-2xl group-hover:scale-110 transition-all"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-aos="fade-left" class="relative">
+                    <div class="glass-card p-6 md:p-12 rounded-3xl md:rounded-[3rem] relative z-10 border-white/10">
+                        <form id="contactForm" class="space-y-4 md:space-y-8">
+                            <div class="grid md:grid-cols-2 gap-4 md:gap-8">
+                                <div class="space-y-2 md:space-y-3">
+                                    <label class="text-xs font-black uppercase tracking-widest text-slate-500 ml-1">Your
+                                        Name</label>
+                                    <input type="text" required
+                                        class="w-full bg-white/5 border border-white/5 rounded-xl md:rounded-2xl px-4 py-3 md:px-6 md:py-4 focus:outline-none focus:border-blue-500 text-white font-medium transition-all text-sm md:text-base"
+                                        placeholder="John Doe">
+                                </div>
+                                <div class="space-y-2 md:space-y-3">
+                                    <label
+                                        class="text-xs font-black uppercase tracking-widest text-slate-500 ml-1">Email
+                                        Address</label>
+                                    <input type="email" required
+                                        class="w-full bg-white/5 border border-white/5 rounded-xl md:rounded-2xl px-4 py-3 md:px-6 md:py-4 focus:outline-none focus:border-blue-500 text-white font-medium transition-all text-sm md:text-base"
+                                        placeholder="john@example.com">
+                                </div>
+                            </div>
+                            <div class="space-y-2 md:space-y-3">
+                                <label class="text-xs font-black uppercase tracking-widest text-slate-500 ml-1">Message
+                                    Brief</label>
+                                <textarea rows="3" required
+                                    class="w-full bg-white/5 border border-white/5 rounded-xl md:rounded-2xl px-4 py-3 md:px-6 md:py-4 focus:outline-none focus:border-blue-500 text-white font-medium transition-all text-sm md:text-base md:min-h-[150px]"
+                                    placeholder="Tell me about your vision..."></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full btn-gradient py-4 md:py-6 rounded-xl md:rounded-2xl font-black text-base md:text-lg text-white shadow-2xl shadow-blue-500/40 flex items-center justify-center gap-4 transition-all hover:scale-[1.02] active:scale-95">
+                                Send Message <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                        <div id="successMessage"
+                            class="hidden absolute inset-0 z-20 flex flex-col items-center justify-center bg-darker/90 backdrop-blur-xl rounded-3xl md:rounded-[3rem] p-6 md:p-12 text-center animate-fade-in">
+                            <div
+                                class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-green-500/20 flex items-center justify-center mb-4 md:mb-6">
+                                <i class="fas fa-check-circle text-green-500 text-3xl md:text-5xl"></i>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-black text-white mb-2 md:mb-4">Message Sent!</h3>
+                            <p class="text-slate-400 font-medium text-sm md:text-base">Thank you for reaching out,
+                                Shubham. <br> I will get
+                                back to you shortly.</p>
+                            <button onclick="resetForm()"
+                                class="mt-6 md:mt-8 text-blue-500 font-bold hover:underline text-sm md:text-base">Send
+                                another message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 md:px-16 border-t border-white/5 bg-darker">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-3xl font-black font-heading gradient-text tracking-tighter">Shubham.Sawant</div>
+            <p class="text-slate-600 font-medium text-sm">© 2026 Shubham Sambhaji Sawant. Build with precision and
+                passion.</p>
+            <div class="flex gap-8">
+                <a href="#home"
+                    class="text-slate-500 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Top</a>
+                <a href="#about"
+                    class="text-slate-500 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">About</a>
+                <a href="#contact"
+                    class="text-slate-500 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize Lenis
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        })
+
+        function raf(time) {
+            lenis.raf(time)
+            requestAnimationFrame(raf)
+        }
+
+        requestAnimationFrame(raf)
+
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('py-4', 'bg-darker/90', 'shadow-2xl');
+                nav.classList.remove('py-5', 'bg-darker/60');
+            } else {
+                nav.classList.remove('py-4', 'bg-darker/90', 'shadow-2xl');
+                nav.classList.add('py-5', 'bg-darker/60');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        menuBtn.addEventListener('click', () => {
+            const navLinks = document.querySelector('.md\\:flex');
+            navLinks.classList.toggle('hidden');
+            navLinks.classList.toggle('absolute');
+            navLinks.classList.toggle('top-full');
+            navLinks.classList.toggle('left-0');
+            navLinks.classList.toggle('w-full');
+            navLinks.classList.toggle('flex-col');
+            navLinks.classList.toggle('glass-mobile');
+            navLinks.classList.toggle('p-8');
+            navLinks.classList.toggle('flex');
+        });
+
+        // Contact Form Handling
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate sending
+            contactForm.classList.add('opacity-50', 'pointer-events-none');
+            setTimeout(() => {
+                contactForm.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                successMessage.classList.add('flex');
+            }, 1000);
+        });
+
+        function resetForm() {
+            contactForm.reset();
+            contactForm.classList.remove('hidden', 'opacity-50', 'pointer-events-none');
+            successMessage.classList.add('hidden');
+            successMessage.classList.remove('flex');
+        }
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const animateCounter = (counter) => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const inc = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + inc);
+                setTimeout(() => animateCounter(counter), 1);
+            } else {
+                counter.innerText = target + (target === 100 ? '%' : '+');
+            }
+        };
+
+        const observerOptions = {
+            threshold: 1.0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        counters.forEach(counter => observer.observe(counter));
+    </script>
+</body>
+
+</html>
