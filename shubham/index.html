@@ -156,6 +156,8 @@
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
             overflow: hidden;
+            will-change: transform;
+            backface-visibility: hidden;
         }
 
         .glass-card::before {
@@ -349,6 +351,34 @@
             backdrop-filter: blur(20px) !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        /* Custom Dropdown Styles */
+        .custom-select-container.active .custom-options {
+            display: block;
+        }
+
+        .custom-select-container.active .custom-select-trigger i {
+            transform: rotate(180deg);
+        }
+
+        .custom-option:hover {
+            background: rgba(59, 130, 246, 0.2);
+            padding-left: 2rem;
         }
     </style>
 </head>
@@ -891,11 +921,14 @@
                 <div data-aos="fade-left" class="relative">
                     <div class="glass-card p-6 md:p-12 rounded-3xl md:rounded-[3rem] relative z-10 border-white/10">
                         <form id="contactForm" class="space-y-4 md:space-y-8">
+                            <!-- Target Sheet Name -->
+                            <input type="hidden" name="sheetName" value="shubham_site">
+
                             <div class="grid md:grid-cols-2 gap-4 md:gap-8">
                                 <div class="space-y-2 md:space-y-3">
                                     <label class="text-xs font-black uppercase tracking-widest text-slate-500 ml-1">Your
                                         Name</label>
-                                    <input type="text" required
+                                    <input type="text" name="Name" required
                                         class="w-full bg-white/5 border border-white/5 rounded-xl md:rounded-2xl px-4 py-3 md:px-6 md:py-4 focus:outline-none focus:border-blue-500 text-white font-medium transition-all text-sm md:text-base"
                                         placeholder="John Doe">
                                 </div>
@@ -903,15 +936,52 @@
                                     <label
                                         class="text-xs font-black uppercase tracking-widest text-slate-500 ml-1">Email
                                         Address</label>
-                                    <input type="email" required
+                                    <input type="email" name="Email" required
                                         class="w-full bg-white/5 border border-white/5 rounded-xl md:rounded-2xl px-4 py-3 md:px-6 md:py-4 focus:outline-none focus:border-blue-500 text-white font-medium transition-all text-sm md:text-base"
                                         placeholder="john@example.com">
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4 md:gap-8">
+                                <div class="space-y-2 md:space-y-3">
+                                    <label
+                                        class="text-xs font-black uppercase tracking-widest text-slate-500 ml-1">Mobile
+                                        Number</label>
+                                    <input type="tel" name="Mobile" required
+                                        class="w-full bg-white/5 border border-white/5 rounded-xl md:rounded-2xl px-4 py-3 md:px-6 md:py-4 focus:outline-none focus:border-blue-500 text-white font-medium transition-all text-sm md:text-base"
+                                        placeholder="+91 00000 00000">
+                                </div>
+                                <div class="space-y-2 md:space-y-3">
+                                    <label
+                                        class="text-xs font-black uppercase tracking-widest text-slate-500 ml-1">Service
+                                        Needed</label>
+                                    <div class="relative custom-select-container" id="serviceDropdown">
+                                        <input type="hidden" name="ServiceNeed" id="selectedService" required>
+                                        <div class="custom-select-trigger w-full bg-white/5 border border-white/5 rounded-xl md:rounded-2xl px-4 py-3 md:px-6 md:py-4 flex justify-between items-center cursor-pointer group transition-all leading-none"
+                                            tabindex="0">
+                                            <span class="selected-text text-slate-400 font-medium">Select Service</span>
+                                            <i
+                                                class="fas fa-chevron-down text-slate-500 group-hover:text-blue-500 transition-all text-[10px] translate-y-[1px]"></i>
+                                        </div>
+                                        <div
+                                            class="custom-options hidden absolute top-full left-0 w-full mt-3 glass rounded-2xl border border-white/10 overflow-hidden z-[100] shadow-2xl backdrop-blur-3xl">
+                                            <div class="custom-option px-6 py-4 cursor-pointer text-white font-medium transition-all border-b border-white/5 last:border-0"
+                                                data-value="Web Development">Web Development</div>
+                                            <div class="custom-option px-6 py-4 cursor-pointer text-white font-medium transition-all border-b border-white/5 last:border-0"
+                                                data-value="Mobile App">Mobile App</div>
+                                            <div class="custom-option px-6 py-4 cursor-pointer text-white font-medium transition-all border-b border-white/5 last:border-0"
+                                                data-value="API Integration">API Integration</div>
+                                            <div class="custom-option px-6 py-4 cursor-pointer text-white font-medium transition-all"
+                                                data-value="Consultancy">Consultancy</div>
+                                            <div class="custom-option px-6 py-4 cursor-pointer text-white font-medium transition-all"
+                                                data-value="Other">Other</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="space-y-2 md:space-y-3">
                                 <label class="text-xs font-black uppercase tracking-widest text-slate-500 ml-1">Message
                                     Brief</label>
-                                <textarea rows="3" required
+                                <textarea name="Message" rows="3" required
                                     class="w-full bg-white/5 border border-white/5 rounded-xl md:rounded-2xl px-4 py-3 md:px-6 md:py-4 focus:outline-none focus:border-blue-500 text-white font-medium transition-all text-sm md:text-base md:min-h-[150px]"
                                     placeholder="Tell me about your vision..."></textarea>
                             </div>
@@ -921,18 +991,26 @@
                             </button>
                         </form>
                         <div id="successMessage"
-                            class="hidden absolute inset-0 z-20 flex flex-col items-center justify-center bg-darker/90 backdrop-blur-xl rounded-3xl md:rounded-[3rem] p-6 md:p-12 text-center animate-fade-in">
-                            <div
-                                class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-green-500/20 flex items-center justify-center mb-4 md:mb-6">
-                                <i class="fas fa-check-circle text-green-500 text-3xl md:text-5xl"></i>
+                            class="hidden flex-col items-center justify-center py-20 text-center animate-fade-in min-h-[400px]">
+                            <div class="mb-8 relative">
+                                <div
+                                    class="w-24 h-24 rounded-full bg-green-500/10 flex items-center justify-center animate-pulse">
+                                    <i class="fas fa-check-circle text-green-500 text-6xl"></i>
+                                </div>
+                                <div class="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full animate-bounce">
+                                </div>
                             </div>
-                            <h3 class="text-2xl md:text-3xl font-black text-white mb-2 md:mb-4">Message Sent!</h3>
-                            <p class="text-slate-400 font-medium text-sm md:text-base">Thank you for reaching out,
-                                Shubham. <br> I will get
-                                back to you shortly.</p>
+                            <h3 class="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">Message Received!
+                            </h3>
+                            <p class="text-slate-400 font-medium text-lg max-w-sm mx-auto leading-relaxed mb-10">
+                                Thank you for reaching out, <span class="text-white">Shubham</span>. I've received your
+                                vision and will get back to you within 24 hours.
+                            </p>
                             <button onclick="resetForm()"
-                                class="mt-6 md:mt-8 text-blue-500 font-bold hover:underline text-sm md:text-base">Send
-                                another message</button>
+                                class="glass px-8 py-3 rounded-xl text-blue-400 font-bold hover:bg-blue-500/10 transition-all border border-blue-500/20 flex items-center gap-2 group">
+                                <i class="fas fa-arrow-left group-hover:-translate-x-1 transition-transform"></i> Send
+                                another message
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -1018,24 +1096,90 @@
         // Contact Form Handling
         const contactForm = document.getElementById('contactForm');
         const successMessage = document.getElementById('successMessage');
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyyq8OcbI9fMJMEgFhUR5ITAc98EPkpOSCEXcnkjuUZiCh3YMSZmrlEGF8HF2luHzfezQ/exec';
 
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            // Simulate sending
+
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner animate-spin"></i>';
             contactForm.classList.add('opacity-50', 'pointer-events-none');
-            setTimeout(() => {
-                contactForm.classList.add('hidden');
-                successMessage.classList.remove('hidden');
-                successMessage.classList.add('flex');
-            }, 1000);
+
+            const formData = new FormData(contactForm);
+            const data = {};
+            formData.forEach((value, key) => { data[key] = value });
+
+            // Send to Google Sheets via Apps Script
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Essential for Google Apps Script
+                cache: 'no-cache',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: new URLSearchParams(formData)
+            })
+                .then(response => {
+                    contactForm.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    successMessage.classList.add('flex');
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('Something went wrong. Please try again or email directly.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+                    contactForm.classList.remove('opacity-50', 'pointer-events-none');
+                });
         });
 
         function resetForm() {
             contactForm.reset();
+            // Reset custom dropdown
+            document.getElementById('selectedService').value = '';
+            document.querySelector('.selected-text').innerText = 'Select Service';
+            document.querySelector('.selected-text').classList.add('text-slate-400');
+            document.querySelector('.selected-text').classList.remove('text-white');
+
             contactForm.classList.remove('hidden', 'opacity-50', 'pointer-events-none');
             successMessage.classList.add('hidden');
             successMessage.classList.remove('flex');
         }
+
+        // Custom Dropdown Logic
+        const dropdown = document.getElementById('serviceDropdown');
+        const trigger = dropdown.querySelector('.custom-select-trigger');
+        const options = dropdown.querySelectorAll('.custom-option');
+        const hiddenInput = document.getElementById('selectedService');
+        const selectedText = dropdown.querySelector('.selected-text');
+
+        trigger.addEventListener('click', () => {
+            dropdown.classList.toggle('active');
+        });
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                const value = option.getAttribute('data-value');
+                selectedText.innerText = value;
+                selectedText.classList.remove('text-slate-400');
+                selectedText.classList.add('text-white');
+                hiddenInput.value = value;
+                dropdown.classList.remove('active');
+
+                // Trigger focus for validation style
+                trigger.classList.add('border-blue-500');
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
 
         // Counter Animation
         const counters = document.querySelectorAll('.counter');
