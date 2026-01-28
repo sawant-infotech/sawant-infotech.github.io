@@ -1,4 +1,32 @@
 <!doctype html>
+<!-- 
+  START: GITHUB PAGES SPA REDIRECT FIX (Sawant Infotech)
+  This script handles 404 errors caused by Single Page Applications (SPAs) on GitHub Pages.
+  When a user refreshes a route like /narayani/dashboard, GitHub Pages looks for a physical file.
+  Since it doesn't exist, this 404.html catches it and redirects back to the project's index.html
+  while passing the intended path as a query parameter (?p=).
+-->
+<script type="text/javascript">
+  (function () {
+    var path = window.location.pathname;
+    var segments = path.split('/').filter(Boolean);
+    if (segments.length > 0) {
+      // Heuristic: If path has multiple segments, the first is usually the project folder.
+      // Example: /narayani/contact -> project: narayani, route: /contact
+      // Example: /about -> project: (root), route: /about
+      var project = segments.length > 1 ? segments[0] : '';
+      var route = project ? '/' + segments.slice(1).join('/') : '/' + segments.join('/');
+      var base = project ? '/' + project + '/' : '/';
+
+      if (route === '/' || route === '') return;
+
+      var query = window.location.search ? '&' + window.location.search.slice(1) : '';
+      var redirectUrl = window.location.origin + base + '?p=' + encodeURIComponent(route) + query + window.location.hash;
+      window.location.replace(redirectUrl);
+    }
+  })();
+</script>
+<!-- END: GITHUB PAGES SPA REDIRECT FIX -->
 <html lang="en">
 
 <head>
