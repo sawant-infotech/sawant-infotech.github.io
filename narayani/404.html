@@ -5,6 +5,19 @@
   <meta charset="utf-8">
   <title>Narayani Infotech - Complete Your IT Resources</title>
   <base href="/narayani/">
+  <!-- START: SPA REDIRECT HANDLER (Sawant Infotech) -->
+  <!-- This script checks if the URL contains a redirect parameter (?p=) from 404.html. -->
+  <!-- If found, it uses history.replaceState to restore the correct URL in the address bar. -->
+  <script type="text/javascript">
+    (function (l) {
+      var params = new URLSearchParams(l.search);
+      var p = params.get('p');
+      if (p) {
+        window.history.replaceState(null, null, l.pathname.replace('index.html', '') + p.slice(1) + l.hash);
+      }
+    }(window.location))
+  </script>
+  <!-- END: SPA REDIRECT HANDLER -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- SEO Meta Tags -->
   <meta name="description"
@@ -456,7 +469,7 @@
   <app-root></app-root>
   <script src="runtime.8aa2a6b8870099dd.js" type="module"></script>
   <script src="polyfills.d661c3f52a411f1b.js" type="module"></script>
-  <script src="main.d24afe96e7cf9198.js" type="module"></script>
+  <script src="main.f4ec05e87c0fee77.js" type="module"></script>
 </body>
 
 </html>
